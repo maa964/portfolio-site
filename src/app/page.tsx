@@ -174,12 +174,13 @@ export default function Portfolio() {
         <div className="container mx-auto max-w-7xl">
           <div className="relative aspect-video bg-slate-800/50 rounded-lg overflow-hidden shadow-2xl shadow-cyan-500/5 border border-cyan-500/10">
             <Image
-              src={`/images/page-${String(portfolioPages[currentPage].id).padStart(2, '0')}.png`}
+              src={`/images/page-${String(portfolioPages[currentPage].id).padStart(2, '0')}.png?v=${portfolioPages[currentPage].id}`}
               alt={portfolioPages[currentPage].alt}
               fill
               className="object-contain"
               priority={currentPage === 0}
               quality={100}
+              unoptimized={true}
             />
           </div>
 

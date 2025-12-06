@@ -1,0 +1,12 @@
+[00:00:01.139] Server  LOG     
+[00:00:01.140] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:01.140] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+[00:00:01.140] Server  LOG        	- include was updated to add '.next/types/**/*.ts'
+[00:00:01.140] Server  LOG        	- include was updated to add '.next/dev/types/**/*.ts'
+[00:00:01.141] Server  LOG     
+[00:00:01.325] Server  LOG      ✓ Ready in 793ms
+[00:00:06.631] Server  LOG      ○ Compiling / ...
+[00:00:11.360] Browser WARN    Image with src "/images/page-01.png?v=1" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:11.360] Browser WARN    Image with src "http://localhost:3000/images/page-01.png?v=1" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
