@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "deploy": "npm run build && wrangler pages deploy out --project-name=masahiro-portfolio",
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=masahiro-portfolio --branch=preview"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",
