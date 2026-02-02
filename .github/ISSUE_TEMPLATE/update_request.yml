@@ -1,0 +1,61 @@
+name: Update Request
+description: Request a content or design update
+title: "[Update]: "
+labels: ["update", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request content updates, text changes, or design modifications.
+
+  - type: dropdown
+    id: update-type
+    attributes:
+      label: Update Type
+      description: What kind of update is this?
+      options:
+        - Content Update (text, links, etc.)
+        - Design Update (styling, layout)
+        - New Section
+        - Project Addition
+        - Skill Update
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the update you want to make
+      placeholder: What needs to be changed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: What is currently displayed?
+      placeholder: Paste or describe the current content
+
+  - type: textarea
+    id: new-content
+    attributes:
+      label: New Content
+      description: What should be displayed instead?
+      placeholder: Paste or describe the new content
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      description: How urgent is this update?
+      options:
+        - Low - When convenient
+        - Medium - Within a week
+        - High - ASAP
+    validations:
+      required: true
