@@ -17,10 +17,9 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "^24",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
     "baseline-browser-mapping": "^2.9.3",
     "eslint": "^9",
