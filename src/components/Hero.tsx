@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -8,12 +9,48 @@ export default function Hero() {
       {/* Background */}
       <div className="grid-bg" style={{ position: 'absolute', inset: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, rgba(15,23,42,0.5), rgb(15,23,42))' }} />
-      
+
       {/* Animated orbs */}
       <div style={{ position: 'absolute', top: '25%', left: '25%', width: '24rem', height: '24rem', background: 'rgba(6,182,212,0.2)', borderRadius: '50%', filter: 'blur(48px)', animation: 'pulse 2s infinite' }} />
       <div style={{ position: 'absolute', bottom: '25%', right: '25%', width: '24rem', height: '24rem', background: 'rgba(168,85,247,0.2)', borderRadius: '50%', filter: 'blur(48px)', animation: 'pulse 2s infinite', animationDelay: '1s' }} />
 
       <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem', maxWidth: '64rem' }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="animate-float"
+          style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}
+        >
+          <div style={{
+            position: 'relative',
+            width: '180px',
+            height: '180px',
+            padding: '4px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)',
+            boxShadow: '0 0 40px rgba(6, 182, 212, 0.4)',
+          }}>
+            <div style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '4px solid #0a0e17',
+              background: '#0a0e17',
+            }}>
+              <Image
+                src="/images/Image_fx.jpg"
+                alt="Masahiro"
+                width={180}
+                height={180}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                priority
+              />
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <p style={{ color: '#22d3ee', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.875rem', marginBottom: '1rem', letterSpacing: '0.1em' }}>WELCOME TO MY PORTFOLIO</p>
         </motion.div>
