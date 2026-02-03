@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "deploy": "npm run build && wrangler pages deploy out --project-name=masahiro-portfolio",
     "deploy:preview": "npm run build && wrangler pages deploy out --project-name=masahiro-portfolio --branch=preview"

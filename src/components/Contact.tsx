@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Github, Send, MapPin } from 'lucide-react';
 
 export default function Contact() {
+
   return (
     <section id="contact" className="section">
       <div style={{ maxWidth: '56rem', margin: '0 auto' }}>
