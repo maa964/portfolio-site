@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Video, Mic, Globe, Server } from 'lucide-react';
+import { Video, Mic, Globe, Server, BookOpen, ExternalLink, PenLine } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [
@@ -40,6 +40,26 @@ const projects = [
     image: '/images/page-06.png',
     tags: ['n8n', 'API', 'SEO'],
   },
+  {
+    id: 5,
+    title: 'Creator Learning Platform',
+    subtitle: 'Learning Tools',
+    desc: 'クリエイター向け学習サイト',
+    icon: BookOpen,
+    image: '/images/page-07.png',
+    tags: ['Next.js', 'React', 'Vercel'],
+    url: 'https://learning-tools-orpin.vercel.app/',
+  },
+  {
+    id: 6,
+    title: 'Tech Blog',
+    subtitle: 'note.com',
+    desc: '技術記事・クリエイティブ制作に関するブログ',
+    icon: PenLine,
+    image: '/images/page-08.png',
+    tags: ['Blog', 'Tech', 'Creative'],
+    url: 'https://note.com/maa964',
+  },
 ];
 
 export default function Projects() {
@@ -71,7 +91,14 @@ export default function Projects() {
                   <p.icon style={{ width: '1.25rem', height: '1.25rem', color: '#22d3ee' }} />
                   <span style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{p.subtitle}</span>
                 </div>
-                <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem' }}>{p.title}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 700 }}>{p.title}</h3>
+                  {'url' in p && p.url && (
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" style={{ color: '#22d3ee', display: 'flex', alignItems: 'center' }}>
+                      <ExternalLink style={{ width: '1rem', height: '1rem' }} />
+                    </a>
+                  )}
+                </div>
                 <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1rem' }}>{p.desc}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {p.tags.map(t => (

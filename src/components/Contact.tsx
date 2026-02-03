@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Mail, Github, Send, MapPin, BookOpen } from 'lucide-react';
+import { Mail, Github, Send, MapPin } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -33,16 +33,6 @@ export default function Contact() {
                 <div>
                   <p style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em' }}>GitHub</p>
                   <p style={{ color: '#cbd5e1' }}>maa964</p>
-                </div>
-              </a>
-
-              <a href="https://note.com/maa964" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', borderRadius: '0.75rem', background: 'rgba(30,41,59,0.5)', border: '1px solid #334155', textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ width: '3rem', height: '3rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(168,85,247,0.2))', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <BookOpen size={20} style={{ color: '#22d3ee' }} />
-                </div>
-                <div>
-                  <p style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Blog</p>
-                  <p style={{ color: '#cbd5e1' }}>note.com/maa964</p>
                 </div>
               </a>
 
