@@ -5,6 +5,7 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Philosophy from '@/components/Philosophy';
 import AudioEngineering from '@/components/AudioEngineering';
+import Downloads from '@/components/Downloads';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -19,6 +20,7 @@ export default function Home() {
         <Skills />
         <Philosophy />
         <AudioEngineering />
+        <Downloads />
         <Contact />
       </main>
       <Footer />
