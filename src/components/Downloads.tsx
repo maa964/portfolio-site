@@ -250,7 +250,7 @@ export default function Downloads() {
             }}
           >
             <p style={{ marginBottom: '0.75rem' }}>
-              Copyright (c) 2025 MASAHIRO
+              Copyright (c) 2025 maa
             </p>
             <p style={{ marginBottom: '0.75rem' }}>
               Permission is hereby granted, free of charge, to any person obtaining a copy

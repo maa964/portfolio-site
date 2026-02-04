@@ -39,13 +39,12 @@ export default function Header() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-slate-900/90 backdrop-blur-lg border-b border-cyan-500/10' : ''
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-900/90 backdrop-blur-lg border-b border-cyan-500/10' : ''
+          }`}
       >
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <motion.div whileHover={{ scale: 1.05 }} className="font-display text-xl font-bold gradient-text cursor-pointer" onClick={() => scrollTo('hero')}>
-            MASAHIRO
+            maa
           </motion.div>
 
           <div className="hidden md:flex items-center gap-8">
@@ -53,9 +52,8 @@ export default function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative text-sm font-medium transition-colors ${
-                  active === item.id ? 'text-cyan-400' : 'text-slate-400 hover:text-white'
-                }`}
+                className={`relative text-sm font-medium transition-colors ${active === item.id ? 'text-cyan-400' : 'text-slate-400 hover:text-white'
+                  }`}
               >
                 {item.label}
                 {active === item.id && (

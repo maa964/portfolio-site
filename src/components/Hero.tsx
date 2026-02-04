@@ -41,7 +41,7 @@ export default function Hero() {
             }}>
               <Image
                 src="/images/Image_fx.jpg"
-                alt="Masahiro"
+                alt="maa"
                 width={180}
                 height={180}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -61,7 +61,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 900, marginBottom: '1.5rem', lineHeight: 1.1 }}
         >
-          <span style={{ color: 'white' }}>MASAHIRO</span>
+          <span style={{ color: 'white' }}>maa</span>
           <br />
           <span className="gradient-text">AI/ML Engineer</span>
         </motion.h1>

@@ -3,7 +3,7 @@ chcp 65001 > nul
 setlocal enabledelayedexpansion
 
 echo ========================================
-echo  Masahiro Portfolio Site セットアップ
+echo  maa Portfolio Site セットアップ
 echo ========================================
 echo.
 
