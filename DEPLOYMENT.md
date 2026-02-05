@@ -24,7 +24,7 @@
 1. [Cloudflare Dashboard](https://dash.cloudflare.com/) にログイン
 2. **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
 3. GitHub リポジトリを連携
-4. プロジェクト名を設定（例: `maa-portfolio`）
+4. プロジェクト名を設定（例: `portfolio-site`）
 
 ### 2. API Token の作成
 
@@ -48,7 +48,7 @@
 
 | Variable 名 | 説明 | デフォルト値 |
 |-------------|------|--------------|
-| `CLOUDFLARE_PROJECT_NAME` | Cloudflare Pages プロジェクト名 | `maa-portfolio` |
+| `CLOUDFLARE_PROJECT_NAME` | Cloudflare Pages プロジェクト名 | `portfolio-site` |
 
 ## CI/CD フロー
 

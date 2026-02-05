@@ -1,5 +1,5 @@
 {
-  "name": "maa-portfolio",
+  "name": "portfolio-site",
   "version": "2.0.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "deploy": "npm run build && wrangler pages deploy out --project-name=maa-portfolio",
-    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=maa-portfolio --branch=preview"
+    "deploy": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-portfolio-site}",
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-portfolio-site} --branch=preview"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",
