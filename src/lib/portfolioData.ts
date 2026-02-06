@@ -1,0 +1,17 @@
+export const portfolioPages = [
+    { id: 1, title: 'Hero', alt: 'Masahiro - AI/ML Engineer & Video Creator' },
+    { id: 2, title: 'Core Expertise', alt: '専門分野' },
+    { id: 3, title: 'Enterprise Video System', alt: 'Jitsi Meetプロジェクト' },
+    { id: 4, title: 'AI Video Enhancement', alt: 'AI動画処理パイプライン' },
+    { id: 5, title: 'Whisper Transcription', alt: 'Whisper文字起こしシステム' },
+    { id: 6, title: 'Web Automation', alt: 'Web情報自動取得' },
+    { id: 7, title: 'Technology Stack', alt: '技術スタック' },
+    { id: 8, title: 'Development Philosophy', alt: '開発理念' },
+    { id: 9, title: 'Documentation', alt: 'ドキュメント' },
+    { id: 10, title: 'Project Structure', alt: 'プロジェクト構成' },
+    { id: 11, title: 'Performance', alt: 'パフォーマンス最適化' },
+    { id: 12, title: 'Reliability', alt: '信頼性・エラーハンドリング' },
+    { id: 13, title: 'Security', alt: 'セキュリティ' },
+    { id: 14, title: 'Future Vision', alt: '未来ビジョン' },
+    { id: 15, title: 'Contact', alt: '連絡先' },
+];
