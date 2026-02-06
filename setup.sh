@@ -2,7 +2,11 @@
 set -euo pipefail
 
 echo "========================================"
+<<<<<<< HEAD
 echo " Masahiro Portfolio Site セットアップ (Linux)"
+=======
+echo " maa Portfolio Site セットアップ (Linux)"
+>>>>>>> da2908009e80022e658511bcccf22b887253ef31
 echo "========================================"
 echo
 

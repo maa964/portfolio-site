@@ -1,7 +1,29 @@
-'use client';
-
-import PortfolioPageLayout from '@/components/PortfolioPageLayout';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Expertise from '@/components/Expertise';
+import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
+import Philosophy from '@/components/Philosophy';
+import AudioEngineering from '@/components/AudioEngineering';
+import Downloads from '@/components/Downloads';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
-  return <PortfolioPageLayout pageId={1} />;
+  return (
+    <div className="noise">
+      <Header />
+      <main>
+        <Hero />
+        <Expertise />
+        <Projects />
+        <Skills />
+        <Philosophy />
+        <AudioEngineering />
+        <Downloads />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
 }

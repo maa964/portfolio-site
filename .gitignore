@@ -38,4 +38,8 @@ build/
 
 # Optional: ignore local caches used by some tools
 *.cache
+<<<<<<< HEAD
 .cache/
+=======
+.cache/
+>>>>>>> da2908009e80022e658511bcccf22b887253ef31
