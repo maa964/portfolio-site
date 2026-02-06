@@ -49,7 +49,7 @@ jobs:
         id: deploy
         run: |
           npm run build
-          npx wrangler pages deploy out --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME || 'masahiro-portfolio' }} --branch=${{ github.head_ref }} --commit-dirty=true > deploy_output.txt 2>&1
+          npx wrangler pages deploy out --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME || 'maa-portfolio' }} --branch=${{ github.head_ref }} --commit-dirty=true > deploy_output.txt 2>&1
           cat deploy_output.txt
           URL=$(grep -o 'https://[^ ]*\.pages\.dev' deploy_output.txt | head -n 1)
           echo "deployment-url=$URL" >> $GITHUB_OUTPUT

@@ -1,5 +1,5 @@
 {
-  "name": "masahiro-portfolio",
+  "name": "maa-portfolio",
   "version": "2.0.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "deploy": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-masahiro-portfolio}",
-    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-masahiro-portfolio} --branch=preview"
+    "deploy": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio}",
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio} --branch=preview"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
