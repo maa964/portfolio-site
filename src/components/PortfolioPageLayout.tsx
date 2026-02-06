@@ -36,7 +36,7 @@ export default function PortfolioPageLayout({ pageId }: PortfolioPageParams) {
                 <div className="w-full lg:w-3/5 p-6 lg:p-10 flex flex-col gap-8 relative border-b lg:border-b-0 lg:border-r border-primary/10">
                     <div className="flex items-center gap-4 mb-2">
                         <span className="bg-primary/20 text-primary text-[10px] font-bold px-3 py-1 tracking-[0.2em] rounded uppercase shadow-[0_0_10px_rgba(37,192,244,0.1)]">Live Feed</span>
-                        <span className="text-[10px] text-primary/40 font-mono">ID: {currentPageData.category}_{pageId.toString().padStart(3, '0')} // REV_2.4</span>
+                        <span className="text-[10px] text-primary/40 font-mono">ID: {currentPageData.category}_{pageId.toString().padStart(3, '0')} {/* REV_2.4 */}</span>
                     </div>
 
                     {/* Media Container with Brackets */}

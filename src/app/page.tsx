@@ -5,6 +5,7 @@ import Skills from '@/components/Skills';
 import ProductionTools from '@/components/ProductionTools';
 import TechnicalArtifacts from '@/components/TechnicalArtifacts';
 import AudioEngineering from '@/components/AudioEngineering';
+import LearningPlatform from '@/components/LearningPlatform';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -19,6 +20,7 @@ export default function Home() {
         <ProductionTools />
         <TechnicalArtifacts />
         <AudioEngineering />
+        <LearningPlatform />
         <Contact />
       </main>
       <Footer />

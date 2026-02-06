@@ -16,10 +16,13 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { id: 'projects', label: 'ARCHIVE' },
-    { id: 'skills', label: 'LABS' },
-    { id: 'blog', label: 'NEURAL_NET' },
-    { id: 'audio', label: 'TERMINAL' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'tools', label: 'TOOLS' },
+    { id: 'blog', label: 'BLOG' },
+    { id: 'audio', label: 'AUDIO' },
+    { id: 'learning', label: 'LEARNING' },
+    { id: 'contact', label: 'CONTACT' },
   ];
 
   const scrollTo = (id: string) => {
@@ -126,8 +129,8 @@ export default function Header() {
                   key={lang}
                   onClick={() => setLanguage(lang)}
                   className={`px-6 py-2 text-xs font-bold border ${language === lang
-                      ? 'bg-primary border-primary text-background-dark'
-                      : 'border-primary/20 text-primary'
+                    ? 'bg-primary border-primary text-background-dark'
+                    : 'border-primary/20 text-primary'
                     }`}
                 >
                   {lang === 'ja' ? 'JAPANESE' : lang === 'en' ? 'ENGLISH' : 'CHINESE'}

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, MapPin, Code, Video, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ export default function Skills() {
   const { language, t } = useLanguage();
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
 
-  const rawLogs = [
+  const rawLogs = useMemo(() => [
     '> INITIALIZING KERNEL_0x82...',
     '> Handshake established at 40ms',
     '> Loading skill_matrix_v2.0...',
@@ -26,7 +26,7 @@ export default function Skills() {
     '> 01010011 01111001 01110011',
     '> SYSTEM_UPTIME: 99.99%',
     '> Rendering latent_space_v01...'
-  ];
+  ], []);
 
   useEffect(() => {
     let i = 0;
@@ -35,7 +35,7 @@ export default function Skills() {
       i++;
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [rawLogs]);
 
   return (
     <section id="skills" className="py-24 bg-background-dark/80 relative overflow-hidden min-h-screen px-6 lg:px-20">
@@ -51,12 +51,13 @@ export default function Skills() {
             viewport={{ once: true }}
             className="glass-panel p-6 rounded-xl border-l-4 border-l-primary shadow-xl"
           >
-            <div className="aspect-square w-32 rounded-lg mb-6 relative overflow-hidden group">
+            <div className="w-full max-w-xs rounded-lg mb-6 relative overflow-hidden group">
               <Image
-                src="public\images\Image_fx.jpg"
+                src="/images/Image_fx.jpg"
                 alt="Profile"
-                fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                width={400}
+                height={400}
+                className="object-contain w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500"
                 unoptimized
               />
               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />

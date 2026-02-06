@@ -64,14 +64,15 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguageState] = useState<Language>('ja');
-
-    useEffect(() => {
-        const saved = localStorage.getItem('language') as Language;
-        if (saved && ['ja', 'en', 'zh'].includes(saved)) {
-            setLanguageState(saved);
+    const [language, setLanguageState] = useState<Language>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('language') as Language;
+            if (saved && ['ja', 'en', 'zh'].includes(saved)) {
+                return saved;
+            }
         }
-    }, []);
+        return 'ja';
+    });
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
