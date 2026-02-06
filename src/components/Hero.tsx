@@ -1,120 +1,53 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ChevronDown, Github, Mail } from 'lucide-react';
-import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-      {/* Background */}
-      <div className="grid-bg" style={{ position: 'absolute', inset: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, rgba(15,23,42,0.5), rgb(15,23,42))' }} />
-
-      {/* Animated orbs */}
-      <div style={{ position: 'absolute', top: '25%', left: '25%', width: '24rem', height: '24rem', background: 'rgba(6,182,212,0.2)', borderRadius: '50%', filter: 'blur(48px)', animation: 'pulse 2s infinite' }} />
-      <div style={{ position: 'absolute', bottom: '25%', right: '25%', width: '24rem', height: '24rem', background: 'rgba(168,85,247,0.2)', borderRadius: '50%', filter: 'blur(48px)', animation: 'pulse 2s infinite', animationDelay: '1s' }} />
-
-      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem', maxWidth: '64rem' }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="animate-float"
-          style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}
-        >
-          <div style={{
-            position: 'relative',
-            width: '180px',
-            height: '180px',
-            padding: '4px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)',
-            boxShadow: '0 0 40px rgba(6, 182, 212, 0.4)',
-          }}>
-            <div style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: '4px solid #0a0e17',
-              background: '#0a0e17',
-            }}>
-              <Image
-                src="/images/Image_fx.jpg"
-                alt="maa"
-                width={180}
-                height={180}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                priority
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p style={{ color: '#22d3ee', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.875rem', marginBottom: '1rem', letterSpacing: '0.1em' }}>WELCOME TO MY PORTFOLIO</p>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 900, marginBottom: '1.5rem', lineHeight: 1.1 }}
-        >
-          <span style={{ color: 'white' }}>maa</span>
-          <br />
-          <span className="gradient-text">AI/ML Engineer</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          style={{ fontSize: 'clamp(1.125rem, 3vw, 1.5rem)', color: '#94a3b8', marginBottom: '2rem', maxWidth: '42rem', margin: '0 auto 2rem' }}
-        >
-          Video Creator & Automation Architect
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}
-        >
-          <a href="#projects" style={{ position: 'relative', padding: '1rem 2rem', background: 'linear-gradient(to right, #06b6d4, #9333ea)', borderRadius: '0.5rem', fontWeight: 600, color: 'white', textDecoration: 'none', overflow: 'hidden' }}>
-            <span style={{ position: 'relative', zIndex: 10 }}>View Projects</span>
-          </a>
-          <a href="#contact" style={{ padding: '1rem 2rem', border: '1px solid #475569', borderRadius: '0.5rem', fontWeight: 600, color: 'white', textDecoration: 'none', transition: 'all 0.3s' }}>
-            Contact Me
-          </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '3rem' }}
-        >
-          <a href="https://github.com/maa964" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', transition: 'color 0.3s' }}>
-            <Github size={24} />
-          </a>
-          <a href="mailto:zentunadance@gmail.com" style={{ color: '#64748b', transition: 'color 0.3s' }}>
-            <Mail size={24} />
-          </a>
-        </motion.div>
+    <section id="hero" className="relative pt-12 pb-16 lg:pt-24 lg:pb-32 px-6 lg:px-20 overflow-hidden bg-background-dark">
+      {/* Background Decorative Mesh Filter (simulating the holographic feel from code.html) */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+        <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)' }}
-      >
-        <a href="#expertise" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#64748b', textDecoration: 'none', transition: 'color 0.3s' }}>
-          <span style={{ fontSize: '0.75rem', marginBottom: '0.5rem' }}>Scroll</span>
-          <ChevronDown className="animate-bounce" size={20} />
-        </a>
-      </motion.div>
+      <div className="max-w-7xl mx-auto text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <h1 className="text-5xl lg:text-7xl font-bold tracking-tighter mb-4 text-white uppercase italic">
+            {t('heroTitlePrefix')}{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-magenta animate-pulse">
+              {t('heroTitleSuffix')}
+            </span>
+          </h1>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed mb-6 font-display">
+            {t('heroSubtitle')}
+          </p>
+        </motion.div>
+
+        {/* HUD Elements as shown in the layout (simulated status bar) */}
+        <div className="mt-12 flex justify-center items-center gap-8 font-mono text-[9px] text-primary/40 uppercase tracking-[0.4em]">
+          <div className="flex items-center gap-2">
+            <span className="size-1 bg-primary rounded-full animate-ping" />
+            System.Link // Establish
+          </div>
+          <div className="hidden sm:block">
+            X-Coords: 42.09 // Y-Coords: 18.22
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="size-1 bg-accent-magenta rounded-full animate-pulse" />
+            Neural_Load: Optimal
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Divider (Thin glow line as seen in several folder layouts) */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     </section>
   );
 }

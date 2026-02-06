@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { portfolioPages } from '@/lib/portfolioData';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navigation({ currentPageId }: { currentPageId?: number }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { language, t } = useLanguage();
 
     return (
         <>
@@ -14,7 +16,7 @@ export default function Navigation({ currentPageId }: { currentPageId?: number }
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 hover:opacity-80 transition-opacity">
-                            Masahiro Portfolio
+                            Nexus / Gallery
                         </Link>
                         {currentPageId && (
                             <span className="hidden md:block text-sm text-slate-400">
@@ -28,7 +30,7 @@ export default function Navigation({ currentPageId }: { currentPageId?: number }
                             href="/"
                             className={`text-sm transition-colors ${currentPageId === 1 ? 'text-cyan-400 font-semibold' : 'text-slate-300 hover:text-cyan-300'}`}
                         >
-                            Portfolio
+                            {t('home')}
                         </Link>
                         <Link
                             href="/mix-mastering"
@@ -45,12 +47,15 @@ export default function Navigation({ currentPageId }: { currentPageId?: number }
                         </button>
                     </nav>
 
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden text-slate-300 hover:text-cyan-400 transition-colors"
-                    >
-                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                    </button>
+                    <div className="flex items-center gap-4">
+                        {/* Language switcher for Navigation if needed, or just rely on global state */}
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="lg:hidden text-slate-300 hover:text-cyan-400 transition-colors"
+                        >
+                            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                    </div>
                 </div>
             </header>
 
@@ -60,14 +65,14 @@ export default function Navigation({ currentPageId }: { currentPageId?: number }
                     <div className="container mx-auto px-4 py-24">
                         <div className="mb-8 flex justify-center gap-4">
                             <Link href="/" onClick={() => setIsMenuOpen(false)} className="px-6 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 hover:border-cyan-500/50 transition-all">
-                                Portfolio
+                                {t('home')}
                             </Link>
                             <Link href="/mix-mastering" onClick={() => setIsMenuOpen(false)} className="px-6 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 hover:border-purple-500/50 transition-all">
                                 Mix & Mastering
                             </Link>
                         </div>
 
-                        <h2 className="text-center text-xl text-slate-400 mb-6">Portfolio Pages</h2>
+                        <h2 className="text-center text-xl text-slate-400 mb-6">{t('technicalArtifacts')}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
                             {portfolioPages.map((page) => (
                                 <Link
@@ -75,14 +80,14 @@ export default function Navigation({ currentPageId }: { currentPageId?: number }
                                     href={page.id === 1 ? '/' : `/p/${page.id}`}
                                     onClick={() => setIsMenuOpen(false)}
                                     className={`p-6 rounded-lg border transition-all ${currentPageId === page.id
-                                            ? 'bg-cyan-500/10 border-cyan-500 shadow-lg shadow-cyan-500/20'
-                                            : 'bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 hover:bg-slate-800'
+                                        ? 'bg-cyan-500/10 border-cyan-500 shadow-lg shadow-cyan-500/20'
+                                        : 'bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 hover:bg-slate-800'
                                         }`}
                                 >
                                     <div className="text-sm text-cyan-400 mb-2">
                                         {String(page.id).padStart(2, '0')}
                                     </div>
-                                    <div className="text-lg font-semibold text-slate-100 mb-1">{page.title}</div>
+                                    <div className="text-lg font-semibold text-slate-100 mb-1">{page.title[language]}</div>
                                     <div className="text-sm text-slate-400">{page.alt}</div>
                                 </Link>
                             ))}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25c0f4",
+                        "accent-magenta": "#ff2e63",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#101e22",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 30, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(37, 192, 244, 0.2);
+        }
+        .scanline {
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(37, 192, 244, 0.15);
+        }
+        .corner-bracket {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: #25c0f4;
+        }
+        .bracket-tl { top: -2px; left: -2px; border-top: 2px solid; border-left: 2px solid; }
+        .bracket-tr { top: -2px; right: -2px; border-top: 2px solid; border-right: 2px solid; }
+        .bracket-bl { bottom: -2px; left: -2px; border-bottom: 2px solid; border-left: 2px solid; }
+        .bracket-br { bottom: -2px; right: -2px; border-bottom: 2px solid; border-right: 2px solid; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-200 min-h-screen flex items-center justify-center p-4 lg:p-10 relative overflow-hidden">
+<!-- Background Blur Simulation (The Gallery behind the modal) -->
+<div class="absolute inset-0 z-0 opacity-40">
+<div class="grid grid-cols-4 gap-4 p-8 blur-md">
+<div class="aspect-square bg-primary/20 rounded-lg"></div>
+<div class="aspect-square bg-slate-800 rounded-lg"></div>
+<div class="aspect-square bg-primary/10 rounded-lg"></div>
+<div class="aspect-square bg-slate-900 rounded-lg"></div>
+<div class="aspect-square bg-slate-800 rounded-lg"></div>
+<div class="aspect-square bg-primary/30 rounded-lg"></div>
+<div class="aspect-square bg-slate-900 rounded-lg"></div>
+<div class="aspect-square bg-primary/5 rounded-lg"></div>
+</div>
+</div>
+<!-- Main Modal Container -->
+<div class="relative z-20 w-full max-w-6xl glass-panel rounded-xl overflow-hidden shadow-2xl flex flex-col lg:flex-row glow-border">
+<div class="scanline"></div>
+<!-- Left Side: Video Player Showcase -->
+<div class="w-full lg:w-3/5 p-6 lg:p-8 flex flex-col gap-6 relative border-b lg:border-b-0 lg:border-r border-primary/20">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 tracking-widest rounded uppercase">Live Feed</span>
+<span class="text-xs text-primary/60 font-mono">ID: AI_VD_092 // REV_2.4</span>
+</div>
+<!-- Video Container -->
+<div class="relative group">
+<div class="bracket-tl corner-bracket"></div>
+<div class="bracket-tr corner-bracket"></div>
+<div class="bracket-bl corner-bracket"></div>
+<div class="bracket-br corner-bracket"></div>
+<div class="aspect-video bg-black rounded overflow-hidden relative flex items-center justify-center group/player">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Cinematic cyberpunk city street with neon signs and flying vehicles" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-Y8Z4QUdLpj-82KZr24CiNz3eMBDJUrcAIPjmOEaZAqUCF2GpwQZDHWzUfDzpVx97f7bBU22--5RJgRuE2aZr4IWDx80e3XfFYL8YSqcubLda_IFutTII8YaDku2Jk0Rr-x137FcsrQQzr1qU7L4JInEQS0cotXl2WM_hExIhXCxCi0e4T1QScgNziYoA9RdF0YonlGAKXC4A2aBjE0pPF6d7N5Nn6bIY8-i0lG8py_1I-shtQHTs8B4BShprvS0Yu9s1Huk8wvU');"></div>
+<!-- Player UI Overlay -->
+<div class="absolute inset-0 bg-black/40 group-hover/player:bg-black/20 transition-colors duration-300"></div>
+<button class="relative z-10 size-20 rounded-full bg-primary/10 border border-primary/40 text-primary flex items-center justify-center backdrop-blur-sm hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-5xl">play_arrow</span>
+</button>
+<!-- Player Metadata -->
+<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-white/70">
+<div class="flex items-center gap-4">
+<span>00:42 / 02:15</span>
+<div class="flex gap-1">
+<span class="size-1 bg-primary rounded-full animate-pulse"></span>
+<span>REC</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span>4K | 60 FPS</span>
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer of Left Column -->
+<div class="flex flex-wrap gap-4 mt-auto">
+<button class="flex items-center gap-2 bg-primary text-background-dark font-bold text-xs py-2 px-6 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                    DOWNLOAD RAW_OUTPUT
+                </button>
+<button class="flex items-center gap-2 border border-primary/40 text-primary font-bold text-xs py-2 px-6 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-sm">share</span>
+                    EXPORT DATA
+                </button>
+</div>
+</div>
+<!-- Right Side: Technical Information Panel -->
+<div class="w-full lg:w-2/5 flex flex-col bg-background-dark/50">
+<!-- Header with Close Button -->
+<div class="p-6 lg:p-8 flex justify-between items-start border-b border-primary/10">
+<div>
+<h1 class="text-primary text-3xl font-bold tracking-tight mb-1 uppercase">Neon_Dreams_v2</h1>
+<p class="text-slate-400 text-xs font-mono uppercase tracking-widest">Project Type: Generative Video Synthesis</p>
+</div>
+<button class="size-10 flex items-center justify-center rounded border border-accent-magenta/30 text-accent-magenta hover:bg-accent-magenta/10 transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 lg:p-8 space-y-8 custom-scrollbar">
+<!-- Tech Specs -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-lg">memory</span>
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-300">Technical Specs</h2>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-[11px] text-slate-300 font-mono">Runway Gen-2</span>
+<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-[11px] text-slate-300 font-mono">Midjourney v6</span>
+<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-[11px] text-slate-300 font-mono">Stable Diffusion XL</span>
+<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-[11px] text-slate-300 font-mono">Topaz Video AI</span>
+</div>
+</section>
+<!-- Prompt Strategy -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">terminal</span>
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-300">Prompt Strategy</h2>
+</div>
+<button class="text-primary/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<div class="bg-black/60 rounded border border-primary/10 p-4 font-mono text-[11px] leading-relaxed text-slate-400 relative">
+<div class="absolute top-2 right-2 text-[8px] text-primary/30 uppercase">Read Only</div>
+<span class="text-primary">/imagine</span> cinematic wide shot of neo-tokyo grid, hyper-detailed architecture, volumetric neon lighting, heavy rain, anamorphic lens flares, cyberpunk aesthetic, high motion, fluid dynamics --ar 21:9 --seed 829421 --v 6.0
+                    </div>
+</section>
+<!-- Generation Parameters -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-lg">settings_input_component</span>
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-300">Generation Parameters</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-6 border-t border-primary/5 pt-4">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">Seed ID</span>
+<span class="text-xs font-mono text-primary/80">48293921004</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">CFG Scale</span>
+<span class="text-xs font-mono text-primary/80">7.5</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">Motion Level</span>
+<span class="text-xs font-mono text-primary/80">6 / 10</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">Steps</span>
+<span class="text-xs font-mono text-primary/80">50 [DDIM]</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">Sampler</span>
+<span class="text-xs font-mono text-primary/80">Euler A</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase text-slate-500 font-bold tracking-tighter">Interpolation</span>
+<span class="text-xs font-mono text-primary/80">R-ESRGAN 4x+</span>
+</div>
+</div>
+</section>
+<!-- Status Panel -->
+<div class="p-4 bg-primary/5 border-l-2 border-primary rounded-r">
+<p class="text-[11px] text-primary leading-tight font-medium uppercase tracking-tight">
+                        Optimization Status: <span class="font-bold">Peak Performance</span>. This project utilized cross-model temporal consistency algorithms to ensure fluid neon light propagation across frames.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Corner UI Elements -->
+<div class="fixed top-8 left-8 text-primary/20 pointer-events-none hidden lg:block">
+<div class="text-[10px] font-mono leading-none">
+            LAT: 35.6895° N<br/>
+            LONG: 139.6917° E<br/>
+            NET: ESTABLISHED
+        </div>
+</div>
+<div class="fixed bottom-8 right-8 text-primary/20 pointer-events-none hidden lg:block">
+<div class="text-[10px] font-mono text-right leading-none uppercase">
+            Cyber-Zen Portfolio // OS_v0.9<br/>
+            (c) 2024 AI_ML_CORE<br/>
+            STATUS: MONITORING
+        </div>
+</div>
+</body></html>

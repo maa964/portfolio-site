@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Tool Documentation | Neural VFX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25c0f4",
+                        "accent-magenta": "#ff00ff",
+                        "background-dark": "#060a0c",
+                        "card-bg": "#0d1216",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .cyber-grid {
+                background-image: linear-gradient(to right, rgba(37, 192, 244, 0.03) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(37, 192, 244, 0.03) 1px, transparent 1px);
+                background-size: 50px 50px;
+            }
+            .blueprint-overlay {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L90 10 L90 90 L10 90 Z' stroke='rgba(37,192,244,0.05)' fill='none'/%3E%3Cpath d='M10 50 L90 50 M50 10 L50 90' stroke='rgba(37,192,244,0.05)' fill='none'/%3E%3Ccircle cx='50' cy='50' r='5' fill='rgba(37,192,244,0.05)'/%3E%3C/svg%3E");
+                opacity: 0.4;
+            }
+            .glow-primary {
+                box-shadow: 0 0 15px rgba(37, 192, 244, 0.15);
+            }
+            .glow-magenta {
+                box-shadow: 0 0 15px rgba(255, 0, 255, 0.15);
+            }
+            .neon-text-primary {
+                text-shadow: 0 0 8px rgba(37, 192, 244, 0.5);
+            }
+            .syntax-keyword { color: #ff79c6; }
+            .syntax-string { color: #f1fa8c; }
+            .syntax-comment { color: #6272a4; }
+            .syntax-function { color: #50fa7b; }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-300 min-h-screen relative selection:bg-primary/30 selection:text-white">
+<div class="fixed inset-0 cyber-grid z-0"></div>
+<div class="fixed inset-0 blueprint-overlay z-0"></div>
+<div class="relative z-10 flex min-h-screen">
+<aside class="w-80 border-r border-primary/10 bg-background-dark/80 backdrop-blur-xl sticky top-0 h-screen overflow-y-auto hidden lg:flex flex-col">
+<div class="p-8">
+<a class="flex items-center gap-2 text-slate-400 hover:text-primary transition-colors mb-12 group" href="#">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-[10px] font-mono uppercase tracking-[0.2em]">Back to Tools</span>
+</a>
+<div class="space-y-1">
+<h1 class="text-xl font-bold text-white tracking-tight uppercase">Video Upscaler</h1>
+<p class="text-[10px] font-mono text-primary/60 uppercase tracking-widest">Documentation v2.4.0</p>
+</div>
+</div>
+<nav class="flex-1 px-4">
+<div class="space-y-8">
+<div>
+<p class="px-4 text-[10px] font-mono text-slate-500 uppercase tracking-[0.3em] mb-4">Core Chapters</p>
+<div class="space-y-1">
+<a class="flex items-center justify-between px-4 py-3 rounded-lg bg-primary/5 text-primary border border-primary/20 group" href="#installation">
+<span class="text-sm font-medium">Installation</span>
+<span class="size-1.5 rounded-full bg-primary shadow-[0_0_8px_#25c0f4]"></span>
+</a>
+<a class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-all group" href="#model-config">
+<span class="text-sm font-medium">Model Configuration</span>
+<span class="size-1.5 rounded-full bg-slate-700"></span>
+</a>
+<a class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-all group" href="#cli-usage">
+<span class="text-sm font-medium">CLI Usage</span>
+<span class="size-1.5 rounded-full bg-slate-700"></span>
+</a>
+<a class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-all group" href="#api-reference">
+<span class="text-sm font-medium">API Reference</span>
+<span class="size-1.5 rounded-full bg-slate-700"></span>
+</a>
+</div>
+</div>
+<div>
+<p class="px-4 text-[10px] font-mono text-slate-500 uppercase tracking-[0.3em] mb-4">Support</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-xs text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span>
+                                Debugging Logs
+                            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-xs text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">communities</span>
+                                GitHub Issues
+                            </a>
+</div>
+</div>
+</div>
+</nav>
+<div class="p-8 border-t border-primary/5">
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<div class="size-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></div>
+<span class="text-[10px] font-mono uppercase text-slate-400">Node: NY-Alpha-12</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 min-w-0 bg-background-dark/30">
+<header class="lg:hidden p-6 border-b border-primary/10 bg-background-dark flex justify-between items-center">
+<h1 class="text-sm font-bold uppercase tracking-widest text-primary">Video Upscaler Docs</h1>
+<button class="material-symbols-outlined">menu</button>
+</header>
+<div class="max-w-4xl mx-auto px-6 lg:px-12 py-16">
+<nav class="flex items-center gap-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-8">
+<span class="hover:text-primary cursor-pointer">Projects</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer">Internal Tools</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-slate-300">Video Upscaler Documentation</span>
+</nav>
+<article class="space-y-16">
+<section class="space-y-6">
+<h2 class="text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-none">
+                            High-Resolution <br/><span class="text-primary italic">Inference Engine</span>
+</h2>
+<p class="text-lg text-slate-400 leading-relaxed max-w-2xl">
+                            The Video Upscaler tool leverages the Real-ESRGAN architecture to enhance frame quality, reduce noise, and reconstruct detail in low-resolution video assets.
+                        </p>
+</section>
+<section class="space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<span class="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">Live Usage Preview</span>
+</div>
+<div class="rounded-xl overflow-hidden border border-primary/20 bg-black glow-primary">
+<div class="bg-slate-900 px-4 py-2 border-b border-white/5 flex items-center justify-between">
+<div class="flex gap-1.5">
+<div class="size-2.5 rounded-full bg-slate-700"></div>
+<div class="size-2.5 rounded-full bg-slate-700"></div>
+<div class="size-2.5 rounded-full bg-slate-700"></div>
+</div>
+<span class="text-[10px] font-mono text-slate-500">zsh — process_upscale.sh</span>
+</div>
+<div class="relative aspect-video flex items-center justify-center overflow-hidden">
+<img alt="Terminal Visualization" class="absolute inset-0 object-cover opacity-40 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjfE448v1HfErzFnkT9Vi-mVwzUvIa4FR_D0nh03Rr6g9nYRveHyyGSgYFvxTHIGSI5yKem0toKJNEDLUfMhTohyR1JwJCS-3e-YorNnFnTDw8wgrur0svmJaqqH7Ef_1yjJ6Cgp_7fU8zJvXkly4VqAfa4-hlySkzjoSrxx4ov7eWThnFEXgEola3EzweOA6RLayFaC3VhpRV-yZG9bneGyCs772lS-VLNLRfUXgvpEJ4xnuxoHHUb2P0_rFEi8nePDMMJW0vS38"/>
+<div class="relative z-10 font-mono text-sm space-y-2 p-8 w-full">
+<p class="text-white"><span class="text-primary">$</span> python upscale.py --input raw_footage.mp4 --scale 4</p>
+<p class="text-slate-500">[SYSTEM] Initializing CUDA backend (RTX 4090 detected)...</p>
+<p class="text-slate-500">[MODEL] Loading Real-ESRGAN Weights (x4_anime6B)...</p>
+<div class="flex items-center gap-2">
+<span class="text-primary">Processing:</span>
+<div class="flex-1 bg-white/5 h-1 rounded overflow-hidden">
+<div class="bg-primary h-full w-[64%]"></div>
+</div>
+<span class="text-xs text-primary">64%</span>
+</div>
+<p class="text-slate-500">FPS: 24.5 | ETA: 02:14</p>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6" id="installation">
+<div class="flex items-center gap-4">
+<span class="text-3xl font-bold text-primary font-mono">01/</span>
+<h3 class="text-2xl font-bold text-white uppercase tracking-tight">Installation</h3>
+</div>
+<p class="text-slate-400">Ensure you have <span class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">Python 3.10+</span> and <span class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">CUDA 12.1</span> installed on your workstation for optimal neural processing.</p>
+<div class="bg-[#080c0e] border border-primary/20 rounded-xl overflow-hidden font-mono text-sm relative">
+<div class="absolute top-4 right-4 text-[10px] text-slate-600 uppercase">bash</div>
+<pre class="p-6 overflow-x-auto"><code class="text-slate-300"><span class="syntax-comment"># Clone the repository</span>
+git clone https://github.com/neural-vfx/upscaler-pro
+cd upscaler-pro
+<span class="syntax-comment"># Create virtual environment</span>
+python -m venv venv
+source venv/bin/activate
+<span class="syntax-comment"># Install dependencies</span>
+pip install -r requirements.txt</code></pre>
+</div>
+<div class="p-5 bg-accent-magenta/5 border-l-2 border-accent-magenta flex gap-4 glow-magenta">
+<span class="material-symbols-outlined text-accent-magenta">warning</span>
+<div class="space-y-1">
+<p class="text-[10px] font-mono text-accent-magenta uppercase tracking-widest font-bold">System Log: Critical Info</p>
+<p class="text-xs text-slate-300 leading-relaxed">FP16 half-precision is enabled by default. If your GPU does not support Tensor Cores, please use the <code class="bg-accent-magenta/10 px-1 rounded">--precision fp32</code> flag to avoid memory allocation errors.</p>
+</div>
+</div>
+</section>
+<section class="space-y-6" id="model-config">
+<div class="flex items-center gap-4">
+<span class="text-3xl font-bold text-primary font-mono">02/</span>
+<h3 class="text-2xl font-bold text-white uppercase tracking-tight">Model Configuration</h3>
+</div>
+<p class="text-slate-400">Customize the neural weights and tile sizes in the <code class="text-white">config.yaml</code> file. For high-res 4K renders, increasing tile overlap is recommended.</p>
+<div class="bg-[#080c0e] border border-primary/20 rounded-xl overflow-hidden font-mono text-sm relative">
+<div class="absolute top-4 right-4 text-[10px] text-slate-600 uppercase">yaml</div>
+<pre class="p-6 overflow-x-auto"><code class="text-slate-300"><span class="syntax-keyword">model:</span>
+  <span class="syntax-keyword">architecture:</span> <span class="syntax-string">"Real-ESRGAN"</span>
+  <span class="syntax-keyword">scale:</span> <span class="syntax-function">4</span>
+  <span class="syntax-keyword">denoise_strength:</span> <span class="syntax-function">0.5</span>
+<span class="syntax-keyword">inference:</span>
+  <span class="syntax-keyword">tile_size:</span> <span class="syntax-function">512</span>
+  <span class="syntax-keyword">tile_overlap:</span> <span class="syntax-function">32</span>
+  <span class="syntax-keyword">batch_size:</span> <span class="syntax-function">1</span></code></pre>
+</div>
+<div class="p-5 bg-primary/5 border-l-2 border-primary flex gap-4 glow-primary">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<div class="space-y-1">
+<p class="text-[10px] font-mono text-primary uppercase tracking-widest font-bold">System Log: Optimization Tip</p>
+<p class="text-xs text-slate-300 leading-relaxed">Setting <code class="bg-primary/10 px-1 rounded">tile_size: 1024</code> on GPUs with 24GB+ VRAM significantly increases throughput for batch processing.</p>
+</div>
+</div>
+</section>
+<section class="space-y-6" id="cli-usage">
+<div class="flex items-center gap-4">
+<span class="text-3xl font-bold text-primary font-mono">03/</span>
+<h3 class="text-2xl font-bold text-white uppercase tracking-tight">CLI Usage</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-6 border border-white/5 bg-white/5 rounded-xl space-y-3">
+<h4 class="text-white font-bold text-sm uppercase">Quick Upscale</h4>
+<p class="text-xs text-slate-500">Standard enhancement for video files.</p>
+<code class="block bg-black p-3 rounded text-[11px] text-primary">--input src.mp4 --output out.mp4</code>
+</div>
+<div class="p-6 border border-white/5 bg-white/5 rounded-xl space-y-3">
+<h4 class="text-white font-bold text-sm uppercase">Image Sequence</h4>
+<p class="text-xs text-slate-500">Processing EXR/PNG folder exports.</p>
+<code class="block bg-black p-3 rounded text-[11px] text-primary">--folder ./frames/ --ext png</code>
+</div>
+</div>
+</section>
+</article>
+<div class="mt-24 pt-12 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-start gap-1">
+<span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Previous Chapter</span>
+<a class="text-white hover:text-primary font-bold uppercase tracking-tight flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span> System Architecture
+                        </a>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Next Chapter</span>
+<a class="text-white hover:text-primary font-bold uppercase tracking-tight flex items-center gap-2" href="#">
+                            Model Configuration <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed bottom-10 right-10 pointer-events-none opacity-20 hidden xl:block">
+<div class="border border-primary/40 p-4 font-mono text-[9px] text-primary space-y-2">
+<p>// ARCHITECTURE_DIAGRAM_V4</p>
+<div class="w-48 h-32 border border-primary/20 flex items-center justify-center relative">
+<div class="w-20 h-20 border border-primary/40 rotate-45"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined">hub</span>
+</div>
+</div>
+<div class="flex justify-between">
+<span>In: RGB[0,1]</span>
+<span>Out: RGB[0,1]</span>
+</div>
+</div>
+</div>
+
+</body></html>

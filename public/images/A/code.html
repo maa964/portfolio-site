@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AI Video Portfolio - Cyber-Zen Gallery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25c0f4",
+                        "accent-magenta": "#ff2ea3",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0a0f11",
+                        "card-dark": "#161d20",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .cyber-glow:hover {
+            box-shadow: 0 0 20px rgba(37, 192, 244, 0.4);
+            border-color: #25c0f4;
+        }
+
+        .holographic-overlay {
+            background: linear-gradient(135deg, rgba(37, 192, 244, 0.1) 0%, rgba(255, 46, 163, 0.05) 100%);
+        }
+
+        .glass-panel {
+            background: rgba(22, 29, 32, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 border-b border-primary/20 glass-panel px-6 py-4 lg:px-20">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3 text-primary">
+                    <span class="material-symbols-outlined text-3xl">deployed_code</span>
+                    <h2 class="text-xl font-bold tracking-tighter uppercase">Nexus / Gallery</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+                    <a class="text-sm font-medium text-primary border-b border-primary" href="#">Portfolio</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Lab</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <div
+                    class="hidden lg:flex items-center bg-card-dark/50 border border-primary/20 rounded-lg px-3 py-1.5">
+                    <span class="material-symbols-outlined text-primary text-xl">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-48 placeholder:text-slate-500"
+                        placeholder="Search archive..." type="text" />
+                </div>
+                <button
+                    class="bg-primary hover:bg-primary/80 text-background-dark px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg">bolt</span>
+                    Hire Me
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 lg:px-20 py-12">
+        <!-- Hero Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl lg:text-7xl font-bold tracking-tighter mb-4 text-white">AI-GENERATED <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-magenta">CINEMATICS</span>
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">Exploring the convergence of machine learning and visual
+                storytelling. From prompt-engineered dreams to commercial-grade neural motion.</p>
+        </div>
+        <!-- Filter System -->
+        <div class="flex flex-wrap gap-3 mb-12 justify-center">
+            <button
+                class="px-6 py-2 rounded-full border border-primary bg-primary/10 text-primary text-sm font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">all_inclusive</span>
+                All Works
+            </button>
+            <button
+                class="px-6 py-2 rounded-full border border-slate-700 hover:border-accent-magenta hover:text-accent-magenta transition-all bg-card-dark text-slate-400 text-sm font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">palette</span>
+                Generative Art
+            </button>
+            <button
+                class="px-6 py-2 rounded-full border border-slate-700 hover:border-primary hover:text-primary transition-all bg-card-dark text-slate-400 text-sm font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">campaign</span>
+                Commercial
+            </button>
+            <button
+                class="px-6 py-2 rounded-full border border-slate-700 hover:border-primary hover:text-primary transition-all bg-card-dark text-slate-400 text-sm font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">science</span>
+                Experimental
+            </button>
+            <button
+                class="px-6 py-2 rounded-full border border-slate-700 hover:border-accent-magenta hover:text-accent-magenta transition-all bg-card-dark text-slate-400 text-sm font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">3d_rotation</span>
+                3D-AI Hybrid
+            </button>
+        </div>
+        <!-- Masonry Grid -->
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <!-- Project Card 1 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-[4/5] bg-cover bg-center relative"
+                    data-alt="Abstract neon digital flow animation thumbnail"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFrvzGtfxZopOm9f-qikV65Iho7RWmi7s5W4LpQYJDqwpvb3_G5MUGr7VBYWg6ju2uN-QpqRby2yS89VgdwKtWqh6q7EEWlVkGHHZgZvIscBqtF1916KQsdbsrWovGTljTcK-_0fPv1TsKD1bKU0VAUnOWs4S_Pfek00PcSwVMRWoxD7N1uInkUSJISvcrvIueqq-JJIBQwF3m-lsPVPpelDtGXz_Bf7EeFd6ApmLdsuDXfzvrC_qhzwFuOkBsCGZe1gShII_TIEc');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Neon Dreams</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-primary px-2 py-1 rounded bg-primary/10 border border-primary/20">Gen-Art</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">ハイパーカラーニューラル補間と時間的一貫性に関する研究</p>
+                </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-video bg-cover bg-center relative"
+                    data-alt="Cyberpunk city street at night with rain"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9vff5mV0oboAAbw0IESnuTaobCJzW_rWyMOFbGNzzu0m0kuO8lIEDnIg4u85wf2tUljMNYkPIknhrll7onUQOCaZOsVKmEdKgFEHVRilMbVwgpW4P5fpcF1qFYsD4opdLv5SebICMkrg8hJSbrVJtdENdumHttSD82rezn5dTLKEBWDHDMIJLC4B9UVarsmVIk8Njvvc6vGfmUf_4yYbCJAljKCyPBHvKlyyET8kgyu_5vXb-xHRHVwphEXdDbrwVtbBPCNy3JzE');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Cyber-Zen Flow</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-accent-magenta px-2 py-1 rounded bg-accent-magenta/10 border border-accent-magenta/20">Experimental</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">Exploring minimalist architecture through the lens of
+                        diffusion models.</p>
+                </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-square bg-cover bg-center relative" data-alt="Futuristic robotic character close up"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsE6HmnY6x8EKZFUVd2KTRfj5aPuEanTCTQ8AvixzHba4g_oYJR9H7MkCmpZNeaAHce_92HcDQMNhLMlk5dF-L065LCGqXIUNbdH4s_AuL4gXfJAZTshCqMQTV-guxy4ShEGfYKx-hzCwTK3PpWkZWCGY8fJ5BIxrePWb4kc-cvu51rCpVANcFqCvPpySufDvbjG7_KkzERYsDCRTsYQovVhLAVu90mhqtTlWw6hh382c4PkM5YMTK-mP9zxGZLM44ozRc5HuAO1k');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Neural Cinema</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-primary px-2 py-1 rounded bg-primary/10 border border-primary/20">Commercial</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">Brand film created entirely using custom-trained LoRA
+                        models for fashion photography.</p>
+                </div>
+            </div>
+            <!-- Project Card 4 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-[4/3] bg-cover bg-center relative"
+                    data-alt="Digital landscape with glowing mountains"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUPBLZhV3JjAG1Z87D-E-U7jeSjm4rr7XCVc_aFcZ-ccIZUwTQM2KiCd2gLGfc-dFh6omGieiEu1a5atS3SR5A0J_ysy7UBn9xZT283WWttjzl03nb24LLB5oB3Wz8_KA2rrWT1yvjqWrchmfu4-OdYlU6D96_9cw7ynGeE9H0pYl7JE0woBd0P0VOagYKyStaBwWwxSxj3ZOlEUybUIwlw37t4ZUdJyzsICZcuT4U1LRlK6OvmZWbotZ2MAyjd6CIObO5pJpqkvQ');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Algorithm City</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-primary px-2 py-1 rounded bg-primary/10 border border-primary/20">3D-AI</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">Procedural urban generation enhanced with generative
+                        texturing.</p>
+                </div>
+            </div>
+            <!-- Project Card 5 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-[9/16] bg-cover bg-center relative"
+                    data-alt="Portrait of a person with digital glitch effect"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrCnMS8PH-HiI1TQ--e6-Qoiv7dY1uIIZDX_V8dpEHCBF1lMTiuAvzspOrHhdAnwzkhjluZzAi7y-q0GaiU1UY9jJOiJFtILLpz9bzQ9P958XVwnhCVhKo43S2madjwGpJn1mEExpoJgmiDkxb5_DAQQtqYNRRJ3JlAbRrVy-hQ5lWUL_loxBCHbAST1iVPcWpbBJkgyHSkD-DIIvBgb6THQ4SUdgR4ShjzSXxWYymoh-X21mQtvYOfctrcEPDW5pfA4Z4kzEPHfg');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Binary Sunset</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-accent-magenta px-2 py-1 rounded bg-accent-magenta/10 border border-accent-magenta/20">Experimental</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">Short Vertical format cinematic using SVD-XT for
+                        smooth motion.</p>
+                </div>
+            </div>
+            <!-- Project Card 6 -->
+            <div
+                class="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow transition-all duration-300">
+                <div class="aspect-square bg-cover bg-center relative"
+                    data-alt="Abstract dark geometric shapes with subtle blue glow"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnCp4j0kdu_qVU8Q2zGMbXpC5NixH2r3s6yuqT0IlBv9mtvGQ65SY6DjZuKfAYOKKdvq85XhQXU-i7Fp_V1LQ9e92BGYuFLJ5X1Mtg2LhlcQ-QrXgR6boWch47Pzd8k0bquT_F7kBMhie4OmDjUz7Jd7arxpuCHV8FWcfdyynew3TwHnVy9r22k81L-69DE02wiKrstwub4dbQxHniW39gpW6KlZ7sa9hKlIWr6TQZHK5AXtoHR3hF1tX-cYquf9h3QoS0SwpvkZk');">
+                    <div
+                        class="absolute inset-0 holographic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white">Ghost in the ML</h3>
+                        <span
+                            class="text-[10px] uppercase tracking-widest text-primary px-2 py-1 rounded bg-primary/10 border border-primary/20">Gen-Art</span>
+                    </div>
+                    <p class="text-sm text-slate-400 line-clamp-2">Exploring latency and artifacting as an aesthetic
+                        choice.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Section Deep Dive (Pre-modal state illustration) -->
+        <div class="mt-24 bg-card-dark/40 border border-slate-800 rounded-2xl p-8 lg:p-12">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="w-full lg:w-3/5 relative">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-primary to-accent-magenta opacity-30 blur-lg rounded-xl">
+                    </div>
+                    <div
+                        class="relative bg-black rounded-xl border-2 border-primary overflow-hidden aspect-video shadow-2xl">
+                        <img class="w-full h-full object-cover opacity-80"
+                            data-alt="Main video player preview showing glowing particle systems"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkmbo_hw5m9nNQ3TsAdawO_RAhhNP58lGC7EOaXMQqcmumAGFkKMU6SWn8916TeoNzpcFlVBrha0ByGHm5t8AlEhjsiPKyV4hR95G439Xbf9_0O4v0CuVdgkZED7apMi-5Yg7GJQR8N6R3SXIWuQ7yBJ0W162GRA2RuXqwQSCcAY83m3GFOUvdTLAKim054i6Yb3DbSZbmuSA2GsGLsvEooZNMC9OgMuvWjLQ3Ewh-fm8JT9Vl8ca0mRat1eDaJaABwi4WHVcP0R8" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-primary text-background-dark p-4 rounded-full shadow-[0_0_20px_#25c0f4]">
+                                <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/5">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+                        <span class="size-2 rounded-full bg-primary animate-pulse"></span> Featured Project
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Project Deep Dive: Neon Dreams</h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed">An exploration into the latent space of urban
+                        futurism. This piece utilized multi-modal pipelines for consistent lighting across generated
+                        sequences.</p>
+                    <div class="space-y-6 font-mono">
+                        <div class="border-l-2 border-primary pl-4 py-1">
+                            <span class="block text-[10px] uppercase text-slate-500 mb-1">AI Stack</span>
+                            <p class="text-sm text-slate-200">Stable Diffusion XL + Runway Gen-2 + AnimateDiff</p>
+                        </div>
+                        <div class="border-l-2 border-primary pl-4 py-1">
+                            <span class="block text-[10px] uppercase text-slate-500 mb-1">Prompt Strategy</span>
+                            <p class="text-xs text-primary bg-primary/5 p-3 rounded-lg border border-primary/10 italic">
+                                "Cinematic volumetric lighting, 8k, vaporwave palette, fluid motion, hyper-detailed
+                                neural architecture..."
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="border-l-2 border-accent-magenta pl-4 py-1">
+                                <span class="block text-[10px] uppercase text-slate-500 mb-1">Frame Rate</span>
+                                <p class="text-sm text-slate-200">24 FPS (Interpolated)</p>
+                            </div>
+                            <div class="border-l-2 border-accent-magenta pl-4 py-1">
+                                <span class="block text-[10px] uppercase text-slate-500 mb-1">Resolution</span>
+                                <p class="text-sm text-slate-200">3840 x 2160 (4K)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="mt-10 w-full py-4 border border-slate-700 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-3 group">
+                        <span class="text-sm font-bold">Download Tech Specs</span>
+                        <span
+                            class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">download</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="border-t border-slate-800 bg-background-dark py-12 px-6 lg:px-20 mt-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-2 text-primary opacity-60">
+                    <span class="material-symbols-outlined">deployed_code</span>
+                    <h2 class="text-lg font-bold tracking-tighter uppercase">Nexus / Gallery</h2>
+                </div>
+                <p class="text-slate-600 text-sm">© 2024 AI Video Portfolio. Built with Neural Insights.</p>
+            </div>
+            <div class="flex gap-6">
+                <a class="size-10 rounded-lg bg-card-dark border border-slate-800 flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined text-xl">share</span>
+                </a>
+                <a class="size-10 rounded-lg bg-card-dark border border-slate-800 flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined text-xl">terminal</span>
+                </a>
+                <a class="size-10 rounded-lg bg-card-dark border border-slate-800 flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating Action Button -->
+    <button
+        class="fixed bottom-8 right-8 size-14 rounded-full bg-primary/20 backdrop-blur-md border border-primary/50 text-primary flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all group z-40 shadow-[0_0_15px_rgba(37,192,244,0.3)]">
+        <span
+            class="material-symbols-outlined font-bold group-hover:-translate-y-1 transition-transform">arrow_upward</span>
+    </button>
+</body>
+
+</html>

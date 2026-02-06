@@ -1,115 +1,145 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Video, Mic, Globe, Server, BookOpen, ExternalLink, PenLine } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { PlayCircle, Infinity, Palette, Megaphone, FlaskConical, Rotate3d } from 'lucide-react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
+
+const filters = [
+  { id: 'all', label: 'All Works', icon: <Infinity size={14} />, color: 'primary' },
+  { id: 'gen-art', label: 'Generative Art', icon: <Palette size={14} />, color: 'accent-magenta' },
+  { id: 'commercial', label: 'Commercial', icon: <Megaphone size={14} />, color: 'primary' },
+  { id: 'experimental', label: 'Experimental', icon: <FlaskConical size={14} />, color: 'primary' },
+  { id: '3d-ai', label: '3D-AI Hybrid', icon: <Rotate3d size={14} />, color: 'accent-magenta' },
+];
 
 const projects = [
   {
     id: 1,
-    title: 'Enterprise Video System',
-    subtitle: 'Jitsi Meet',
-    desc: 'Docker/SSL/TLSベースの企業向けビデオ会議システム',
-    icon: Server,
-    image: '/images/page-03.png',
-    tags: ['Docker', 'SSL/TLS', 'WebRTC'],
+    title: 'Neon Dreams',
+    tag: 'Gen-Art',
+    color: 'primary',
+    desc: 'ハイパーカラーニューラル補間と時間的一貫性に関する研究',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFrvzGtfxZopOm9f-qikV65Iho7RWmi7s5W4LpQYJDqwpvb3_G5MUGr7VBYWg6ju2uN-QpqRby2yS89VgdwKtWqh6q7EEWlVkGHHZgZvIscBqtF1916KQsdbsrWovGTljTcK-_0fPv1TsKD1bKU0VAUnOWs4S_Pfek00PcSwVMRWoxD7N1uInkUSJISvcrvIueqq-JJIBQwF3m-lsPVPpelDtGXz_Bf7EeFd6ApmLdsuDXfzvrC_qhzwFuOkBsCGZe1gShII_TIEc',
+    aspect: '4/5'
   },
   {
     id: 2,
-    title: 'AI Video Enhancement',
-    subtitle: 'GPU-Accelerated',
-    desc: 'Real-ESRGAN, RIFE, LUTを活用したCUDA高速化パイプライン',
-    icon: Video,
-    image: '/images/page-04.png',
-    tags: ['CUDA', 'Real-ESRGAN', 'RIFE'],
+    title: 'Cyber-Zen Flow',
+    tag: 'Experimental',
+    color: 'accent-magenta',
+    desc: '拡散モデルの視点からミニマリスト建築を探る',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9vff5mV0oboAAbw0IESnuTaobCJzW_rWyMOFbGNzzu0m0kuO8lIEDnIg4u85wf2tUljMNYkPIknhrll7onUQOCaZOsVKmEdKgFEHVRilMbVwgpW4P5fpcF1qFYsD4opdLv5SebICMkrg8hJSbrVJtdENdumHttSD82rezn5dTLKEBWDHDMIJLC4B9UVarsmVIk8Njvvc6vGfmUf_4yYbCJAljKCyPBHvKlyyET8kgyu_5vXb-xHRHVwphEXdDbrwVtbBPCNy3JzE',
+    aspect: 'video'
   },
   {
     id: 3,
-    title: 'Whisper Transcription',
-    subtitle: 'Speech-to-Text',
-    desc: 'OpenAI Whisperによる高精度SRT/VTT自動生成',
-    icon: Mic,
-    image: '/images/page-05.png',
-    tags: ['Whisper', 'SRT', 'VTT'],
+    title: 'Neural Cinema',
+    tag: 'Commercial',
+    color: 'primary',
+    desc: 'ファッション写真用にカスタムトレーニングされた LoRA モデルのみを使用して作成されたブランド フィルム',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBsE6HmnY6x8EKZFUVd2KTRfj5aPuEanTCTQ8AvixzHba4g_oYJR9H7MkCmpZNeaAHce_92HcDQMNhLMlk5dF-L065LCGqXIUNbdH4s_AuL4gXfJAZTshCqMQTV-guxy4ShEGfYKx-hzCwTK3PpWkZWCGY8fJ5BIxrePWb4kc-cvu51rCpVANcFqCvPpySufDvbjG7_KkzERYsDCRTsYQovVhLAVu90mhqtTlWw6hh382c4PkM5YMTK-mP9zxGZLM44ozRc5HuAO1k',
+    aspect: 'square'
   },
   {
     id: 4,
-    title: 'Web Automation',
-    subtitle: 'Information Retrieval',
-    desc: 'n8n + API連携による自動情報収集・SEO最適化',
-    icon: Globe,
-    image: '/images/page-06.png',
-    tags: ['n8n', 'API', 'SEO'],
+    title: 'Algorithm City',
+    tag: '3D-AI',
+    color: 'primary',
+    desc: '生成テクスチャリングによって強化された手続き型都市生成',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUPBLZhV3JjAG1Z87D-E-U7jeSjm4rr7XCVc_aFcZ-ccIZUwTQM2KiCd2gLGfc-dFh6omGieiEu1a5atS3SR5A0J_ysy7UBn9xZT283WWttjzl03nb24LLB5oB3Wz8_KA2rrWT1yvjqWrchmfu4-OdYlU6D96_9cw7ynGeE9H0pYl7JE0woBd0P0VOagYKyStaBwWwxSxj3ZOlEUybUIwlw37t4ZUdJyzsICZcuT4U1LRlK6OvmZWbotZ2MAyjd6CIObO5pJpqkvQ',
+    aspect: '4/3'
   },
   {
     id: 5,
-    title: 'Creator Learning Platform',
-    subtitle: 'Learning Tools',
-    desc: 'クリエイター向け学習サイト',
-    icon: BookOpen,
-    image: '/images/page-07.png',
-    tags: ['Next.js', 'React', 'Vercel'],
-    url: 'https://learning-tools-orpin.vercel.app/',
+    title: 'Binary Sunset',
+    tag: 'Experimental',
+    color: 'accent-magenta',
+    desc: 'スムーズな動きを実現する SVD-XT を使用した、短い縦型フォーマットのシネマティック',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDrCnMS8PH-HiI1TQ--e6-Qoiv7dY1uIIZDX_V8dpEHCBF1lMTiuAvzspOrHhdAnwzkhjluZzAi7y-q0GaiU1UY9jJOiJFtILLpz9bzQ9P958XVwnhCVhKo43S2madjwGpJn1mEExpoJgmiDkxb5_DAQQtqYNRRJ3JlAbRrVy-hQ5lWUL_loxBCHbAST1iVPcWpbBJkgyHSkD-DIIvBgb6THQ4SUdgR4ShjzSXxWYymoh-X21mQtvYOfctrcEPDW5pfA4Z4kzEPHfg',
+    aspect: '[9/16]'
   },
   {
     id: 6,
-    title: 'Tech Blog',
-    subtitle: 'note.com',
-    desc: '技術記事・クリエイティブ制作に関するブログ',
-    icon: PenLine,
-    image: '/images/page-08.png',
-    tags: ['Blog', 'Tech', 'Creative'],
-    url: 'https://note.com/maa964',
-  },
+    title: 'Ghost in the ML',
+    tag: 'Gen-Art',
+    color: 'primary',
+    desc: '美的選択としてのレイテンシーとアーティファクトの検討',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnCp4j0kdu_qVU8Q2zGMbXpC5NixH2r3s6yuqT0IlBv9mtvGQ65SY6DjZuKfAYOKKdvq85XhQXU-i7Fp_V1LQ9e92BGYuFLJ5X1Mtg2LhlcQ-QrXgR6boWch47Pzd8k0bquT_F7kBMhie4OmDjUz7Jd7arxpuCHV8FWcfdyynew3TwHnVy9r22k81L-69DE02wiKrstwub4dbQxHniW39gpW6KlZ7sa9hKlIWr6TQZHK5AXtoHR3hF1tX-cYquf9h3QoS0SwpvkZk',
+    aspect: 'square'
+  }
 ];
 
 export default function Projects() {
-  return (
-    <section id="projects" className="section" style={{ background: 'rgba(15,23,42,0.5)' }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center" style={{ marginBottom: '4rem' }}>
-          <h2 className="section-title gradient-text">Featured Projects</h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>主要プロジェクト</p>
-        </motion.div>
+  const { t } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState('all');
 
-        <div className="grid-2-cols">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="card-hover"
-              style={{ borderRadius: '1rem', background: 'rgba(30,41,59,0.3)', border: '1px solid #334155', overflow: 'hidden' }}
+  return (
+    <section id="projects" className="py-24 bg-background-dark px-6 lg:px-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Filter System */}
+        <div className="flex flex-wrap gap-3 mb-12 justify-center">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              onClick={() => setActiveFilter(f.id)}
+              className={`px-6 py-2 rounded-full border text-sm font-medium flex items-center gap-2 transition-all ${activeFilter === f.id
+                ? `border-primary bg-primary/10 text-primary`
+                : 'border-slate-700 hover:border-primary hover:text-primary bg-card-dark text-slate-400'
+                }`}
             >
-              <div style={{ position: 'relative', height: '12rem', overflow: 'hidden' }}>
-                <Image src={p.image} alt={p.title} fill style={{ objectFit: 'cover', opacity: 0.6 }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0f172a, rgba(15,23,42,0.5), transparent)' }} />
-              </div>
-              <div style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                  <p.icon style={{ width: '1.25rem', height: '1.25rem', color: '#22d3ee' }} />
-                  <span style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{p.subtitle}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 700 }}>{p.title}</h3>
-                  {'url' in p && p.url && (
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" style={{ color: '#22d3ee', display: 'flex', alignItems: 'center' }}>
-                      <ExternalLink style={{ width: '1rem', height: '1rem' }} />
-                    </a>
-                  )}
-                </div>
-                <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1rem' }}>{p.desc}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {p.tags.map(t => (
-                    <span key={t} style={{ padding: '0.25rem 0.75rem', fontSize: '0.75rem', borderRadius: '9999px', background: 'rgba(51,65,85,0.5)', color: '#cbd5e1' }}>{t}</span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              {f.icon}
+              {f.label}
+            </button>
           ))}
         </div>
+
+        {/* Masonry Grid */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          <AnimatePresence mode='popLayout'>
+            {projects.map((p) => (
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow-border transition-all duration-300"
+              >
+                <div className={`relative aspect-${p.aspect} overflow-hidden`}>
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <PlayCircle className="text-white w-14 h-14" />
+                  </div>
+                </div>
+                <div className="p-5">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-lg text-white group-hover:text-primary transition-colors">{p.title}</h3>
+                    <span className={`text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-${p.color}/10 border border-${p.color}/20 text-${p.color}`}>
+                      {p.tag}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-400 line-clamp-2">{p.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
+
+      <style jsx>{`
+        .cyber-glow-border:hover {
+          box-shadow: 0 0 20px rgba(37, 192, 244, 0.4);
+          border-color: #25c0f4;
+        }
+      `}</style>
     </section>
   );
 }

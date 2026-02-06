@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cyber-Zen Tech Blog Feed</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25c0f4",
+                        "accent-magenta": "#ff2ea3",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0a0f11",
+                        "card-dark": "#162024",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0f11;
+            background-image:
+                linear-gradient(rgba(37, 192, 244, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 192, 244, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #25c0f4, transparent);
+            position: absolute;
+            top: -2px;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 20;
+            box-shadow: 0 0 15px #25c0f4;
+        }
+
+        .group:hover .scan-line {
+            opacity: 1;
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        .glow-border {
+            border: 1px solid rgba(37, 192, 244, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .group:hover .glow-border {
+            border-color: #25c0f4;
+            box-shadow: 0 0 15px rgba(37, 192, 244, 0.3);
+        }
+
+        .hud-corner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #25c0f4;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
+    <!-- HUD Layout Container -->
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Header Section -->
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#25c0f4]/20 px-6 lg:px-20 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-12">
+                    <div class="flex items-center gap-3 text-primary">
+                        <div class="size-6">
+                            <span class="material-symbols-outlined text-3xl">deployed_code</span>
+                        </div>
+                        <h2 class="text-white text-xl font-bold leading-tight tracking-tight uppercase font-display">
+                            Cyber-Zen</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-white/70 hover:text-primary text-sm font-medium transition-colors"
+                            href="#">ARCHIVE</a>
+                        <a class="text-white/70 hover:text-primary text-sm font-medium transition-colors"
+                            href="#">LABS</a>
+                        <a class="text-white/70 hover:text-primary text-sm font-medium transition-colors"
+                            href="#">NEURAL_NET</a>
+                        <a class="text-white/70 hover:text-primary text-sm font-medium transition-colors"
+                            href="#">TERMINAL</a>
+                    </nav>
+                </div>
+                <div class="flex flex-1 justify-end gap-6 items-center">
+                    <label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+                        <div
+                            class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-[#25c0f4]/20 focus-within:border-primary transition-all">
+                            <div class="text-primary/50 flex bg-card-dark items-center justify-center pl-4">
+                                <span class="material-symbols-outlined text-lg">search</span>
+                            </div>
+                            <input
+                                class="form-input flex w-full min-w-0 flex-1 border-none bg-card-dark text-white focus:ring-0 placeholder:text-white/30 px-3 text-sm font-display"
+                                placeholder="Search Data Streams..." value="" />
+                        </div>
+                    </label>
+                    <button
+                        class="flex min-w-[100px] items-center justify-center rounded bg-primary text-background-dark text-xs font-black uppercase tracking-widest h-10 px-6 hover:shadow-[0_0_20px_rgba(37,192,244,0.5)] transition-all">
+                        Connect
+                    </button>
+                </div>
+            </header>
+            <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+                <!-- Hero & Filter Section -->
+                <div class="mb-12">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                        <div class="max-w-2xl">
+                            <h1
+                                class="text-white text-5xl md:text-6xl font-black leading-tight tracking-tighter uppercase mb-4">
+                                Technical <span class="text-primary">Artifacts</span></h1>
+                            <p class="text-white/50 text-lg font-normal max-w-lg leading-relaxed">
+                                Decrypting the frontier of AI/ML engineering, generative video pipelines, and the future
+                                of synthetic media.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 text-primary/40 font-mono text-xs">
+                            <span class="material-symbols-outlined text-sm">sensors</span>
+                            <span class="uppercase">Status: Online // Latency: 12ms</span>
+                        </div>
+                    </div>
+                    <!-- Category Filter -->
+                    <div
+                        class="flex gap-3 flex-wrap p-2 border border-[#25c0f4]/10 rounded-xl bg-card-dark/30 backdrop-blur-sm">
+                        <button
+                            class="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all bg-primary text-background-dark shadow-[0_0_15px_rgba(37,192,244,0.3)]">All_Entries</button>
+                        <button
+                            class="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all text-primary/60 hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20">AI/ML_Models</button>
+                        <button
+                            class="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all text-primary/60 hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20">Machine_Leaning</button>
+                        <button
+                            class="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all text-primary/60 hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20">Python_Scripts</button>
+                        <button
+                            class="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all text-primary/60 hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20">Gen_Video</button>
+                    </div>
+                </div>
+                <!-- Blog Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="Abstract blue glowing neural network lines on dark background"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD9WytOlclROqlrnuin6EEkPoLrmCCKLz_kR0mYCToKQnVI8ViSCeFILtjnv_T2jjbkISv7e4H0JBf7iWy8LjXWcW45NKbTMizx98s57ZKmMVSL8rNek7YQjQVKSMJgMFTuECB5_qr-tYIQUGtqtdbJtmeuSpBlXnHbQcCVbQ2KSIWPmRP_9eLlPIZuWImhyz0P5Co9zDmV8rdABbgEC11Qel_xJUaraqlIxrGb0alEJkdF8_pIFK7j5UzE3rkUGboOT-zkirnPWg" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 8829-X</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#Neural_Rendering</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.05.12</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                Optimizing Latent Space: My Stable Diffusion Workflow</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    Deep dive into the mathematical shortcuts for reducing VRAM usage while maximizing
+                                    image fidelity in SDXL.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 2 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="Digital glitch art with magenta and cyan color shifts"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtJysLH3Pv9qtclFopC7XaFdTVcUsZgxtoU8fc_9gwEin4r_jCspdCALjHzg_XqzXK9BGFfSi3CD7S12fppTG_PSjaxdRIP0Gm5kYH__B0H7jSN60FoQZDZy0Z30f0doYXUwWh_BiDXMbHW7oIaE2tVYsAJYeYPxynNn8h4df7frxdfcJLdKq9EFn1BIN05GUy8N2RqhySyKLQ3yh--1XKYkLdZQjzdX6jBnXVVR4uiVvXpf0pPmVWDTz8dlJovfEfx4OPvBXdbQA" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 4412-A</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#Glitch_Art</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.04.28</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                Automated Video Glitch with Python Scripts</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    Hacking the MP4 container format to create repeatable, procedural artifacts for
+                                    aesthetic video production.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 3 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="3D render of a futuristic AI chip with glowing circuits"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl-b8GEPrgPPVLpeKjuv4_e4a77v_YfQk0IVoyH54S1smiX2bvKtFsSybtRc3dkeaeFNCA70GgfPL1z4UfsNVkk6QCHft-9m9Tmd4qbuSN4sImu1XZ9ebgiEKpWCTsXrUfSAq3gw1gWg2x9gCJb4UwKxNriaqdDWVyNkOweRd0P5CFG1HSyPv_qvaJh6dBkqrj7F8G47WHYf3k1wJby6LCXtAheN-6nLewdDStlIGq1drcYrgATRnjveKr11EP--ZzHBewBEbVoPs" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 2901-B</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#Vector_DB</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.04.15</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                Vector Databases for LLM Content Retrieval</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    How to architect a RAG system that handles millions of technical documents with
+                                    sub-second retrieval.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 4 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="Digital landscape with geometric wireframes and dark atmosphere"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1dskRQVS_OaDclrZD9nR12ZNskBjRJ1QlQy6YfwTIxTWOxq0SE9XGwSXqH3g51DQos0mTHm_iN8neuE7zSZ1gv7LEmco5PwZEDrW_IGCuVBcR4yP6KCoJQzDY0MHtkJPGy8_zT-Y1rah_KJ3Jv_A0VaIHg1uLEDjoD4a4QIeMHv37QroqDKQ5Lzy9KN1a5Vp1zah4DgCVqyoogTNu6oqHN9qqsHeAUJixafeQIk6sQEa_BG6RXlGOkHHUSIaowGm7z4Y61WV8Whw" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 7731-K</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#Synth_Media</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.03.30</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                The Future of Cinematic Synthesis</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    Exploring the ethics and workflows of using generative AI in high-end film
+                                    production pipelines.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 5 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="Deep blue abstract fluid motion with bright highlights"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuACf5F3X6vJsPfRIe5SKdJPoNV956yNL_OZ1ewBwOP_Yq1vKU624UnLVollxqdMQLuPkabKmi2vfZXEMrbs_LsEJoQsfAPyJ21aWSHGaNsEIuqR5pjNk6hlEJYF0ZBbnbzeAJ_620apFKDyYuWNVI-FMqKMeXbkXEu4fvU7X-FtXKHci2jzrmKM8hDTAjVrzIxRf2jdp5n2ikCN7piB19F87rVBcOzLWt0szW85frR7zsUhQb2ipWl_Qh7-HkLsB0dDXvMPT65bJGw" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 0019-Z</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#Interpolation</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.03.12</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                Deep Learning for Video Frame Interpolation</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    Benchmarking RIFE vs. DAIN for generating ultra-slow motion from standard 24fps
+                                    cinema footage.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 6 -->
+                    <article
+                        class="group relative flex flex-col bg-card-dark/40 backdrop-blur-md rounded-lg overflow-hidden glow-border">
+                        <div class="scan-line"></div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                                data-alt="Satellite view of Earth at night with bright digital data nodes"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNG9_JCHvvF3vES6HtZ90hdw-smIhp_5I_ze66JMdW883xzMQyS514d-lZYqENNxCKa05giaxIDgO0bzUg8mOtdEr37dq8zCDbhSfKuIp_8Z2V7Yo3FvNpjPDUBxxINvBCyR2gbqupfiqZ-oGJ99w1vu00a71rDIfmcgJJdHy6xXJmdVBTBzICZ-kjMpYqCYH3mK-dR1K7Lfnf1uImZUxDO4WazoesmQQRfm2U20rcB3KlAAfNFVGx7rPbsF0numMnJjyU-oU1laM" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute top-4 left-4 bg-background-dark/80 px-2 py-1 border border-primary/30 rounded text-[10px] font-mono text-primary uppercase">
+                                ID: 5521-M</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="text-accent-magenta font-mono text-[10px] font-bold uppercase tracking-widest">#RealTime</span>
+                                <span class="text-white/20 text-[10px]">•</span>
+                                <span class="text-white/40 font-mono text-[10px]">2024.02.25</span>
+                            </div>
+                            <h3
+                                class="text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                                Neural Rendering in Real-time Environments</h3>
+                            <div class="mt-auto overflow-hidden">
+                                <p
+                                    class="text-white/40 text-sm line-clamp-2 mb-4 group-hover:text-white/70 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    Implementing Instant-NGP inside Unreal Engine 5 for photorealistic digital twins.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-tighter cursor-pointer">
+                                    Read_Full_Log
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <!-- Pagination -->
+                <div class="flex items-center justify-center mt-16 gap-4">
+                    <button
+                        class="flex size-10 items-center justify-center rounded border border-primary/20 text-primary hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button
+                        class="text-xs font-black size-10 flex items-center justify-center rounded bg-primary text-background-dark shadow-[0_0_15px_rgba(37,192,244,0.3)]">01</button>
+                    <button
+                        class="text-xs font-black size-10 flex items-center justify-center rounded border border-primary/20 text-white/50 hover:text-primary hover:border-primary/50 transition-colors">02</button>
+                    <button
+                        class="text-xs font-black size-10 flex items-center justify-center rounded border border-primary/20 text-white/50 hover:text-primary hover:border-primary/50 transition-colors">03</button>
+                    <span class="text-white/20">...</span>
+                    <button
+                        class="text-xs font-black size-10 flex items-center justify-center rounded border border-primary/20 text-white/50 hover:text-primary hover:border-primary/50 transition-colors">12</button>
+                    <button
+                        class="flex size-10 items-center justify-center rounded border border-primary/20 text-primary hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </main>
+            <!-- Footer -->
+            <footer class="border-t border-[#25c0f4]/10 bg-card-dark/20 py-12 px-6 lg:px-20 mt-20">
+                <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined text-xl">deployed_code</span>
+                            <span class="font-bold uppercase tracking-widest text-sm">Cyber-Zen // V 2.0.4</span>
+                        </div>
+                        <p class="text-white/30 text-[10px] font-mono uppercase tracking-[0.2em]">© 2024
+                            Neural_Protocol. All Bits Reserved.</p>
+                    </div>
+                    <div class="flex gap-8">
+                        <a class="text-white/50 hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">terminal</span>
+                        </a>
+                        <a class="text-white/50 hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">code</span>
+                        </a>
+                        <a class="text-white/50 hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">share</span>
+                        </a>
+                        <a class="text-white/50 hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">mail</span>
+                        </a>
+                    </div>
+                    <button
+                        class="flex items-center gap-2 text-primary/60 hover:text-primary transition-colors text-xs font-mono uppercase tracking-widest">
+                        Back_to_Top
+                        <span class="material-symbols-outlined text-sm">arrow_upward</span>
+                    </button>
+                </div>
+            </footer>
+        </div>
+        <!-- HUD Accents (Floating) -->
+        <div class="fixed top-24 left-6 hidden xl:block opacity-20 pointer-events-none">
+            <div class="flex flex-col gap-1">
+                <div class="w-12 h-1 bg-primary"></div>
+                <div class="w-8 h-1 bg-primary/50"></div>
+                <div class="w-10 h-1 bg-primary/30"></div>
+            </div>
+            <div class="mt-8 text-[10px] font-mono text-primary flex flex-col gap-2">
+                <span>COORD: 34.0522° N</span>
+                <span>DATA: 118.2437° W</span>
+                <span class="text-accent-magenta">SECURE_LINK: YES</span>
+            </div>
+        </div>
+        <div class="fixed bottom-12 right-6 hidden xl:block opacity-20 pointer-events-none">
+            <div class="text-[10px] font-mono text-primary text-right flex flex-col gap-2">
+                <span>BUFFERING STREAM...</span>
+                <div class="w-32 h-1 bg-primary/10 overflow-hidden relative">
+                    <div class="absolute top-0 left-0 h-full w-2/3 bg-primary"></div>
+                </div>
+                <span class="text-accent-magenta">UPLINK_STABLE</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

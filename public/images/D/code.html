@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cyber-Terminal Contact Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25c0f4",
+                        "accent": "#ff00ff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0a0c0d",
+                        "terminal-bg": "#111618",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0c0d;
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(37, 192, 244, 0.2), inset 0 0 10px rgba(37, 192, 244, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 8px rgba(37, 192, 244, 0.6);
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(37, 192, 244, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-display text-white selection:bg-primary/30 selection:text-primary">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-6">
+<!-- Decorative Corners -->
+<div class="absolute top-10 left-10 opacity-20 hidden lg:block">
+<pre class="text-[10px] leading-tight text-primary">0x45 0x6E 0x63 0x72 0x79 0x70 0x74
+0x53 0x74 0x61 0x74 0x75 0x73 0x3A
+0x41 0x43 0x54 0x49 0x56 0x45 0x20
+            </pre>
+</div>
+<div class="absolute bottom-10 right-10 opacity-20 hidden lg:block text-right">
+<pre class="text-[10px] leading-tight text-primary">&gt;&gt; NODE_LINK: ESTABLISHED
+&gt;&gt; UPLINK_SPEED: 4.2GBPS
+&gt;&gt; PACKET_LOSS: 0.00%
+            </pre>
+</div>
+<!-- Main Terminal Container -->
+<div class="z-20 w-full max-w-4xl bg-terminal-bg/90 border border-primary/30 rounded-lg backdrop-blur-md overflow-hidden glow-border">
+<!-- Terminal Header -->
+<header class="flex items-center justify-between border-b border-primary/20 bg-primary/5 px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex gap-1.5">
+<div class="h-3 w-3 rounded-full bg-accent/60"></div>
+<div class="h-3 w-3 rounded-full bg-primary/40"></div>
+<div class="h-3 w-3 rounded-full bg-primary/20"></div>
+</div>
+<div class="ml-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+<h2 class="text-xs font-bold tracking-[0.2em] text-primary glow-text uppercase">System Access: Contact_Protocol v4.0</h2>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+<div class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-bold text-primary">SIGNAL: ENCRYPTED</span>
+</div>
+</div>
+</header>
+<!-- Main Interface Grid -->
+<div class="flex flex-col lg:flex-row">
+<!-- Left Sidebar - Stats -->
+<aside class="w-full lg:w-64 border-r border-primary/10 bg-black/20 p-6 flex flex-col gap-6">
+<div>
+<p class="text-[10px] font-bold text-primary/50 uppercase tracking-widest mb-3">Diagnostic Data</p>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-[10px]">
+<span class="text-primary/70">CPU LOAD</span>
+<span class="text-primary font-bold">12.4%</span>
+</div>
+<div class="h-1 w-full bg-primary/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[12%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-[10px]">
+<span class="text-primary/70">MEM ALLOC</span>
+<span class="text-primary font-bold">44.1%</span>
+</div>
+<div class="h-1 w-full bg-primary/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[44%] shadow-[0_0_8px_#25c0f4]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto">
+<div class="p-3 border border-primary/20 rounded-lg bg-primary/5">
+<p class="text-[10px] text-primary/70 mb-2">NEURAL_LINK</p>
+<div class="flex items-end gap-1 h-8">
+<div class="w-1 bg-primary/40 h-[20%]"></div>
+<div class="w-1 bg-primary h-[60%]"></div>
+<div class="w-1 bg-primary/60 h-[40%]"></div>
+<div class="w-1 bg-primary h-[90%]"></div>
+<div class="w-1 bg-primary/80 h-[50%]"></div>
+<div class="w-1 bg-primary h-[75%]"></div>
+<div class="w-1 bg-primary/40 h-[30%]"></div>
+<div class="w-1 bg-primary h-[85%]"></div>
+<div class="w-1 bg-primary/50 h-[45%]"></div>
+</div>
+<p class="text-[9px] text-primary font-mono mt-2 uppercase">Status: Stable</p>
+</div>
+</div>
+</aside>
+<!-- Contact Form Area -->
+<main class="flex-1 p-8">
+<div class="mb-8">
+<h1 class="text-2xl font-black text-white glow-text mb-2 tracking-tight">INITIATING_UPLINK...</h1>
+<p class="text-primary/60 text-sm font-light">Please provide valid identity strings for data transmission.</p>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Name Input -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary flex items-center gap-2">
+<span class="text-primary/50">&gt;</span> USERNAME:_
+                                </label>
+<div class="relative">
+<input class="w-full bg-black/40 border-b border-primary/30 border-t-0 border-x-0 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono py-3" placeholder="[ENTER IDENTITY]" type="text"/>
+</div>
+</div>
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary flex items-center gap-2">
+<span class="text-primary/50">&gt;</span> EMAIL_COORDINATES:_
+                                </label>
+<div class="relative">
+<input class="w-full bg-black/40 border-b border-primary/30 border-t-0 border-x-0 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono py-3" placeholder="[USER@NODE.DOMAIN]" type="email"/>
+</div>
+</div>
+</div>
+<!-- Message TextArea -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary flex items-center gap-2">
+<span class="text-primary/50">&gt;</span> DATA_PAYLOAD:_
+                            </label>
+<div class="relative group">
+<textarea class="w-full bg-black/40 border border-primary/20 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono p-4 rounded-lg resize-none" placeholder="[WRITE MESSAGE STRING]" rows="4"></textarea>
+<div class="absolute bottom-2 right-2 flex items-center gap-2 opacity-50 group-focus-within:opacity-100">
+<span class="text-[10px] text-primary/60 font-mono">CHARS: 0/1000</span>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col md:flex-row items-center justify-between pt-4 gap-6">
+<div class="flex items-center gap-4 text-xs font-mono">
+<div class="flex items-center gap-2">
+<span class="text-accent">!</span>
+<span class="text-accent/80 tracking-tighter">SECURE CHANNEL ENABLED</span>
+</div>
+<span class="text-primary/20">|</span>
+<div class="text-primary/60">LATENCY: 24ms</div>
+</div>
+<button class="group relative flex min-w-[240px] items-center justify-center overflow-hidden rounded-lg bg-primary px-8 py-4 transition-all hover:scale-[1.02] active:scale-[0.98]" type="submit">
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12"></div>
+<span class="relative text-sm font-black tracking-[0.2em] text-background-dark uppercase">Initiate Transmission</span>
+<span class="material-symbols-outlined ml-2 text-background-dark">send</span>
+</button>
+</div>
+</form>
+</main>
+</div>
+<!-- Terminal Footer Status Bar -->
+<footer class="bg-black/40 border-t border-primary/20 px-6 py-3 flex items-center justify-between text-[10px] font-mono tracking-wider">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-primary/40">LOCATION:</span>
+<span class="text-primary">TOKYO_NODE // JPN</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-primary/40">ENCRYPTION:</span>
+<span class="text-primary">AES-256_RSA</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-primary/60">READY</span>
+<span class="w-2 h-2 bg-primary rounded-sm cursor-blink"></span>
+</div>
+</footer>
+</div>
+<!-- Decorative UI Elements -->
+<div class="mt-12 flex items-center gap-20 opacity-30 grayscale hover:grayscale-0 transition-all">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">radar</span>
+<span class="text-[10px] font-bold tracking-[0.3em] text-primary">SCANNING</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">memory</span>
+<span class="text-[10px] font-bold tracking-[0.3em] text-primary">PROCESSING</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">shield</span>
+<span class="text-[10px] font-bold tracking-[0.3em] text-primary">PROTECTED</span>
+</div>
+</div>
+</div>
+<!-- Scanline Overlay -->
+<div class="fixed inset-0 pointer-events-none z-50">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent h-20 w-full animate-[scanline_8s_linear_infinite]"></div>
+</div>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</body></html>
