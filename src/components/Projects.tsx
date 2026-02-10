@@ -21,7 +21,7 @@ const projects = [
     color: 'primary',
     desc: 'ハイパーカラーニューラル補間と時間的一貫性に関する研究',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFrvzGtfxZopOm9f-qikV65Iho7RWmi7s5W4LpQYJDqwpvb3_G5MUGr7VBYWg6ju2uN-QpqRby2yS89VgdwKtWqh6q7EEWlVkGHHZgZvIscBqtF1916KQsdbsrWovGTljTcK-_0fPv1TsKD1bKU0VAUnOWs4S_Pfek00PcSwVMRWoxD7N1uInkUSJISvcrvIueqq-JJIBQwF3m-lsPVPpelDtGXz_Bf7EeFd6ApmLdsuDXfzvrC_qhzwFuOkBsCGZe1gShII_TIEc',
-    aspect: '4/5'
+    aspect: '[4/5]'
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const projects = [
     tag: 'Experimental',
     color: 'accent-magenta',
     desc: '拡散モデルの視点からミニマリスト建築を探る',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9vff5mV0oboAAbw0IESnuTaobCJzW_rWyMOFbGNzzu0m0kuO8lIEDnIg4u85wf2tUljMNYkPIknhrll7onUQOCaZOsVKmEdKgFEHVRilMbVwgpW4P5fpcF1qFYsD4opdLv5SebICMkrg8hJSbrVJtdENdumHttSD82rezn5dTLKEBWDHDMIJLC4B9UVarsmVIk8Njvvc6vGfmUf_4yYbCJAljKCyPBHvKlyyET8kgyu_5vXb-xHRHVwphEXdDbrwVtbBPCNy3JzE',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9vff5mV0oboAAbw0IESnuTaobCJzW_rWyMOFbGNzzu0m0kuO8lIEDnIg4u85wf2tUljMNYkPIknhrll7onUQOCaZOsVKmEdKgFEHVRilMbVwgpW4P5fpcF1qFYsD4opdLv5SebICMkrg8hJSbrVJtdENdumHttSD82rezn5dTLKEBWDHDMIJLC4B9UVarsmVIk8Njvvc6vGfmUf_4yYbCJAljKCyPBHvKlyyET8kgyu_5vXb-xHRHVwphEXDbrwVtbBPCNy3JzE',
     aspect: 'video'
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     color: 'primary',
     desc: '生成テクスチャリングによって強化された手続き型都市生成',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUPBLZhV3JjAG1Z87D-E-U7jeSjm4rr7XCVc_aFcZ-ccIZUwTQM2KiCd2gLGfc-dFh6omGieiEu1a5atS3SR5A0J_ysy7UBn9xZT283WWttjzl03nb24LLB5oB3Wz8_KA2rrWT1yvjqWrchmfu4-OdYlU6D96_9cw7ynGeE9H0pYl7JE0woBd0P0VOagYKyStaBwWwxSxj3ZOlEUybUIwlw37t4ZUdJyzsICZcuT4U1LRlK6OvmZWbotZ2MAyjd6CIObO5pJpqkvQ',
-    aspect: '4/3'
+    aspect: '[4/3]'
   },
   {
     id: 5,
@@ -113,6 +113,7 @@ export default function Projects() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
                     unoptimized
+                    priority={p.id <= 6}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

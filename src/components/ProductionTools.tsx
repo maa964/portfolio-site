@@ -168,7 +168,7 @@ export default function ProductionTools() {
                             <div className="h-64 relative">
                                 <div
                                     className="absolute inset-0 bg-cover bg-center"
-                                    style={{ backgroundImage: `url('${tool.image}')` }}
+                                    style={{ backgroundImage: tool.image ? `url('${tool.image}')` : 'none', backgroundColor: '#11181b' }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1518] to-transparent" />
                                 <div className="absolute bottom-4 left-6 flex items-center gap-2">
