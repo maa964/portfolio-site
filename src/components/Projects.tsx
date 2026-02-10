@@ -16,12 +16,13 @@ const filters = [
 const projects = [
   {
     id: 1,
-    title: 'Neon Dreams',
-    tag: 'Gen-Art',
+    title: 'Neural Interpolation',
+    tag: 'Experimental',
     color: 'primary',
     desc: 'ハイパーカラーニューラル補間と時間的一貫性に関する研究',
+    video: '/sample02.mp4',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFrvzGtfxZopOm9f-qikV65Iho7RWmi7s5W4LpQYJDqwpvb3_G5MUGr7VBYWg6ju2uN-QpqRby2yS89VgdwKtWqh6q7EEWlVkGHHZgZvIscBqtF1916KQsdbsrWovGTljTcK-_0fPv1TsKD1bKU0VAUnOWs4S_Pfek00PcSwVMRWoxD7N1uInkUSJISvcrvIueqq-JJIBQwF3m-lsPVPpelDtGXz_Bf7EeFd6ApmLdsuDXfzvrC_qhzwFuOkBsCGZe1gShII_TIEc',
-    aspect: '[4/5]'
+    aspect: 'video'
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const projects = [
     tag: 'Experimental',
     color: 'accent-magenta',
     desc: '拡散モデルの視点からミニマリスト建築を探る',
+    video: '/sample05.mp4',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9vff5mV0oboAAbw0IESnuTaobCJzW_rWyMOFbGNzzu0m0kuO8lIEDnIg4u85wf2tUljMNYkPIknhrll7onUQOCaZOsVKmEdKgFEHVRilMbVwgpW4P5fpcF1qFYsD4opdLv5SebICMkrg8hJSbrVJtdENdumHttSD82rezn5dTLKEBWDHDMIJLC4B9UVarsmVIk8Njvvc6vGfmUf_4yYbCJAljKCyPBHvKlyyET8kgyu_5vXb-xHRHVwphEXDbrwVtbBPCNy3JzE',
     aspect: 'video'
   },
@@ -47,8 +49,9 @@ const projects = [
     tag: '3D-AI',
     color: 'primary',
     desc: '生成テクスチャリングによって強化された手続き型都市生成',
+    video: '/sample03.mp4',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUPBLZhV3JjAG1Z87D-E-U7jeSjm4rr7XCVc_aFcZ-ccIZUwTQM2KiCd2gLGfc-dFh6omGieiEu1a5atS3SR5A0J_ysy7UBn9xZT283WWttjzl03nb24LLB5oB3Wz8_KA2rrWT1yvjqWrchmfu4-OdYlU6D96_9cw7ynGeE9H0pYl7JE0woBd0P0VOagYKyStaBwWwxSxj3ZOlEUybUIwlw37t4ZUdJyzsICZcuT4U1LRlK6OvmZWbotZ2MAyjd6CIObO5pJpqkvQ',
-    aspect: '[4/3]'
+    aspect: 'video'
   },
   {
     id: 5,
@@ -65,8 +68,9 @@ const projects = [
     tag: 'Gen-Art',
     color: 'primary',
     desc: '美的選択としてのレイテンシーとアーティファクトの検討',
+    video: '/sample04.mp4',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnCp4j0kdu_qVU8Q2zGMbXpC5NixH2r3s6yuqT0IlBv9mtvGQ65SY6DjZuKfAYOKKdvq85XhQXU-i7Fp_V1LQ9e92BGYuFLJ5X1Mtg2LhlcQ-QrXgR6boWch47Pzd8k0bquT_F7kBMhie4OmDjUz7Jd7arxpuCHV8FWcfdyynew3TwHnVy9r22k81L-69DE02wiKrstwub4dbQxHniW39gpW6KlZ7sa9hKlIWr6TQZHK5AXtoHR3hF1tX-cYquf9h3QoS0SwpvkZk',
-    aspect: 'square'
+    aspect: 'video'
   }
 ];
 
@@ -107,14 +111,25 @@ export default function Projects() {
                 className="group relative overflow-hidden rounded-xl border border-slate-800 bg-card-dark cyber-glow-border transition-all duration-300"
               >
                 <div className={`relative aspect-${p.aspect} overflow-hidden`}>
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
-                    unoptimized
-                    priority={p.id <= 6}
-                  />
+                  {'video' in p ? (
+                    <video
+                      src={p.video as string}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 opacity-80"
+                    />
+                  ) : (
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+                      unoptimized
+                      priority={p.id <= 6}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <PlayCircle className="text-white w-14 h-14" />
