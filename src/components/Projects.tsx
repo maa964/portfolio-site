@@ -68,6 +68,7 @@ const projects = [
     tag: 'Gen-Art',
     color: 'primary',
     desc: '美的選択としてのレイテンシーとアーティファクトの検討',
+    caption: 'レイテンシーやアーティファクトは技術的な失敗ではなく、時間によって形作られる美的判断。',
     video: '/sample04.mp4',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnCp4j0kdu_qVU8Q2zGMbXpC5NixH2r3s6yuqT0IlBv9mtvGQ65SY6DjZuKfAYOKKdvq85XhQXU-i7Fp_V1LQ9e92BGYuFLJ5X1Mtg2LhlcQ-QrXgR6boWch47Pzd8k0bquT_F7kBMhie4OmDjUz7Jd7arxpuCHV8FWcfdyynew3TwHnVy9r22k81L-69DE02wiKrstwub4dbQxHniW39gpW6KlZ7sa9hKlIWr6TQZHK5AXtoHR3hF1tX-cYquf9h3QoS0SwpvkZk',
     aspect: 'video'
@@ -131,8 +132,13 @@ export default function Projects() {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <PlayCircle className="text-white w-14 h-14" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity p-8 text-center bg-background-dark/40 backdrop-blur-[2px]">
+                    <PlayCircle className="text-white w-12 h-12 mb-4 transform group-hover:scale-110 transition-transform" />
+                    {'caption' in p && (
+                      <p className="text-white text-xs md:text-sm font-medium leading-relaxed max-w-[80%] drop-shadow-lg italic">
+                        &quot;{p.caption as string}&quot;
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="p-5">
