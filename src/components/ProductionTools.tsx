@@ -74,7 +74,6 @@ export default function ProductionTools() {
             engine: 'Standalone .exe',
             color: 'primary',
             accent: '#25c0f4',
-            downloadUrl: '/downloads/TaskManager.zip',
             boothUrl: 'https://maa964.booth.pm/items/7977565',
             image: '/images/taskmanager01.jpg'
         }
@@ -252,32 +251,36 @@ export default function ProductionTools() {
                                     )}
                                 </div>
                                 <div className="mt-auto">
-                                    {tool.downloadUrl && tool.boothUrl ? (
-                                        <div className="grid grid-cols-2 gap-3">
-                                            <a
-                                                href={tool.downloadUrl}
-                                                download
-                                                className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
-                                                style={{
-                                                    backgroundColor: tool.accent,
-                                                    color: '#0a0f11'
-                                                }}
-                                            >
-                                                <Download size={14} /> Direct
-                                            </a>
-                                            <a
-                                                href={tool.boothUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
-                                                style={{
-                                                    backgroundColor: 'transparent',
-                                                    color: tool.accent,
-                                                    border: `1px solid ${tool.accent}40`
-                                                }}
-                                            >
-                                                <ExternalLink size={14} /> BOOTH
-                                            </a>
+                                    {tool.downloadUrl || tool.boothUrl ? (
+                                        <div className={tool.downloadUrl && tool.boothUrl ? "grid grid-cols-2 gap-3" : "flex flex-col gap-3"}>
+                                            {tool.downloadUrl && (
+                                                <a
+                                                    href={tool.downloadUrl}
+                                                    download
+                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    style={{
+                                                        backgroundColor: tool.accent,
+                                                        color: '#0a0f11'
+                                                    }}
+                                                >
+                                                    <Download size={14} /> Direct
+                                                </a>
+                                            )}
+                                            {tool.boothUrl && (
+                                                <a
+                                                    href={tool.boothUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    style={{
+                                                        backgroundColor: tool.downloadUrl ? 'transparent' : tool.accent,
+                                                        color: tool.downloadUrl ? tool.accent : '#0a0f11',
+                                                        border: tool.downloadUrl ? `1px solid ${tool.accent}40` : 'none'
+                                                    }}
+                                                >
+                                                    <ExternalLink size={14} /> BOOTH
+                                                </a>
+                                            )}
                                         </div>
                                     ) : (
                                         <button
