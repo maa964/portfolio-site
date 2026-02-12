@@ -8,14 +8,12 @@ import AudioEngineering from '@/components/AudioEngineering';
 import LearningPlatform from '@/components/LearningPlatform';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import { fetchRssArticles, type RssArticle } from '@/lib/rss';
-
-const RSS_URL = 'https://note.com/maa964/rss';
+import { getRssArticles, type RssArticle } from '@/lib/rss';
 
 export default async function Home() {
   let articles: RssArticle[] = [];
   try {
-    articles = await fetchRssArticles(RSS_URL);
+    articles = await getRssArticles();
   } catch (error) {
     console.error('Failed to fetch RSS:', error);
   }

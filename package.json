@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "deploy": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio}",
-    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio} --branch=preview"
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio} --branch=preview",
+    "rss:fetch": "node scripts/fetch-rss.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",

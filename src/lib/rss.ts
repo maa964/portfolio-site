@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 export interface RssArticle {
   id: string;
   title: string;
@@ -39,6 +42,22 @@ function stripHtml(html: string): string {
 function generateId(link: string): string {
   const hash = link.split('/').pop() || '';
   return hash.slice(0, 8).toUpperCase() || Math.random().toString(36).slice(2, 10).toUpperCase();
+}
+
+export async function getRssArticles(url: string = 'https://note.com/maa964/rss'): Promise<RssArticle[]> {
+  // Try reading from local file first (GitHub Action generated)
+  try {
+    const filePath = path.join(process.cwd(), 'public/data/rss.json');
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.warn('Local RSS file not found or invalid, falling back to live fetch:', error);
+  }
+
+  // Fallback to live fetch
+  return fetchRssArticles(url);
 }
 
 export async function fetchRssArticles(url: string): Promise<RssArticle[]> {
