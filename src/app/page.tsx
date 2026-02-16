@@ -6,6 +6,7 @@ import ProductionTools from '@/components/ProductionTools';
 import TechnicalArtifacts from '@/components/TechnicalArtifacts';
 import AudioEngineering from '@/components/AudioEngineering';
 import LearningPlatform from '@/components/LearningPlatform';
+import MyThumbnailer from '@/components/MyThumbnailer';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -21,6 +22,7 @@ export default function Home() {
         <TechnicalArtifacts />
         <AudioEngineering />
         <LearningPlatform />
+        <MyThumbnailer />
         <Contact />
       </main>
       <Footer />
