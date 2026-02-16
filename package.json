@@ -13,7 +13,7 @@
     "rss:fetch": "node scripts/fetch-rss.mjs"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/postcss": "^4.1.18",
     "amqplib": "^0.10.9",
     "framer-motion": "^11.15.0",
     "lucide-react": "^0.555.0",
@@ -25,14 +25,14 @@
     "@types/node": "^24",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.22",
+    "autoprefixer": "^10.4.24",
     "baseline-browser-mapping": "^2.9.19",
     "eslint": "^9",
-    "eslint-config-next": "16.0.5",
+    "eslint-config-next": "16.1.6",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
     "typescript": "^5",
-    "wrangler": "^4.61.1"
+    "wrangler": "^4.65.0"
   },
   "engines": {
     "node": ">=18.0.0",
