@@ -59,10 +59,11 @@ export default function Skills() {
                 height={400}
                 className="object-contain w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500"
                 unoptimized
+                priority
               />
               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2 tracking-tight uppercase font-display">Identity_Null_01</h2>
+            <h2 className="text-2xl font-bold text-white mb-2 tracking-tight uppercase font-display">maa</h2>
             <p className="text-primary/80 text-[10px] font-medium uppercase tracking-[0.2em] mb-4 font-mono">Neural Architect & Visionary</p>
             <div className="space-y-4 text-slate-400 text-sm leading-relaxed font-display">
               <p>{t('heroSubtitle')}</p>

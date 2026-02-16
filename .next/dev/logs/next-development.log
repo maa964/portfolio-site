@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [00:00:01.390] Server  LOG      ✓ Ready in 914ms
 [00:00:06.444] Server  LOG      ○ Compiling / ...
 [00:00:08.735] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
@@ -15,3 +16,7 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [00:09:54.752] Server  LOG      ✓ Compiled in 301ms
 [00:10:30.039] Browser WARN    Image with src "/images/Image_fx.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+=======
+[00:00:01.238] Server  LOG     ✓ Ready in 811ms
+[00:00:10.025] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+>>>>>>> a49e221d66fb644a2409fcfff886ee8516b6560d

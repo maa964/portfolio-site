@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { Code, Zap, Settings, Download, FileText, Terminal, ChevronRight } from 'lucide-react';
+import { Code, Zap, Settings, Download, FileText, Terminal, ChevronRight, Timer, ExternalLink, Heart, ListTodo } from 'lucide-react';
 
 export default function ProductionTools() {
     const { t } = useLanguage();
@@ -47,6 +47,35 @@ export default function ProductionTools() {
             engine: 'LibTorch Backend',
             color: 'primary',
             accent: '#25c0f4'
+        },
+        {
+            id: 'pomodoro',
+            title: 'Pomodoro Timer',
+            subtitle: 'Focus Management',
+            icon: <Timer size={24} />,
+            desc: 'シンプルでカスタマイズ可能なポモドーロ・テクニック用タイマー。25分の作業と5分の休憩を自動切替、デジタル/アナログ表示切替、背景色・文字色のカスタマイズに対応。',
+            compatibility: 'Windows',
+            interface: 'Desktop App',
+            engine: 'Standalone .exe',
+            color: 'accent-magenta',
+            accent: '#ff2ea3',
+            downloadUrl: '/downloads/PomodroTimer.zip',
+            boothUrl: 'https://maa964.booth.pm/items/7977463',
+            image: '/images/pomodro01.jpg'
+        },
+        {
+            id: 'taskmanager',
+            title: 'Task Manager',
+            subtitle: 'Productivity Tool',
+            icon: <ListTodo size={24} />,
+            desc: 'シンプルで使いやすいタスク管理ツール。タスクの追加・編集・削除、優先度設定、進捗管理に対応。効率的なワークフローをサポートします。',
+            compatibility: 'Windows',
+            interface: 'Desktop App',
+            engine: 'Standalone .exe',
+            color: 'primary',
+            accent: '#25c0f4',
+            boothUrl: 'https://maa964.booth.pm/items/7977565',
+            image: '/images/taskmanager01.jpg'
         }
     ];
 
@@ -168,7 +197,7 @@ export default function ProductionTools() {
                             <div className="h-64 relative">
                                 <div
                                     className="absolute inset-0 bg-cover bg-center"
-                                    style={{ backgroundImage: `url('${tool.image}')` }}
+                                    style={{ backgroundImage: tool.image ? `url('${tool.image}')` : 'none', backgroundColor: '#11181b' }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1518] to-transparent" />
                                 <div className="absolute bottom-4 left-6 flex items-center gap-2">
@@ -222,17 +251,50 @@ export default function ProductionTools() {
                                     )}
                                 </div>
                                 <div className="mt-auto">
-                                    <button
-                                        className="w-full font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-                                        style={{
-                                            backgroundColor: tool.id === 'interpolator' ? tool.accent : 'transparent',
-                                            color: tool.id === 'interpolator' ? '#0a0f11' : tool.accent,
-                                            border: tool.id === 'interpolator' ? 'none' : `1px solid ${tool.accent}40`
-                                        }}
-                                    >
-                                        {tool.id === 'interpolator' ? <Zap size={14} /> : <Code size={14} />}
-                                        {tool.id === 'interpolator' ? 'Download Plugin' : 'Get C++ SDK'}
-                                    </button>
+                                    {tool.downloadUrl || tool.boothUrl ? (
+                                        <div className={tool.downloadUrl && tool.boothUrl ? "grid grid-cols-2 gap-3" : "flex flex-col gap-3"}>
+                                            {tool.downloadUrl && (
+                                                <a
+                                                    href={tool.downloadUrl}
+                                                    download
+                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    style={{
+                                                        backgroundColor: tool.accent,
+                                                        color: '#0a0f11'
+                                                    }}
+                                                >
+                                                    <Download size={14} /> Direct
+                                                </a>
+                                            )}
+                                            {tool.boothUrl && (
+                                                <a
+                                                    href={tool.boothUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    style={{
+                                                        backgroundColor: tool.downloadUrl ? 'transparent' : tool.accent,
+                                                        color: tool.downloadUrl ? tool.accent : '#0a0f11',
+                                                        border: tool.downloadUrl ? `1px solid ${tool.accent}40` : 'none'
+                                                    }}
+                                                >
+                                                    <ExternalLink size={14} /> BOOTH
+                                                </a>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <button
+                                            className="w-full font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                                            style={{
+                                                backgroundColor: tool.id === 'interpolator' ? tool.accent : 'transparent',
+                                                color: tool.id === 'interpolator' ? '#0a0f11' : tool.accent,
+                                                border: tool.id === 'interpolator' ? 'none' : `1px solid ${tool.accent}40`
+                                            }}
+                                        >
+                                            {tool.id === 'interpolator' && <><Zap size={14} /> Download Plugin</>}
+                                            {tool.id === 'ae-plugin' && <><Code size={14} /> Get C++ SDK</>}
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
@@ -256,6 +318,30 @@ export default function ProductionTools() {
                     <div className="space-y-1">
                         <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Active Installs</p>
                         <p className="text-2xl font-bold text-white font-mono">14.2k</p>
+                    </div>
+                </div>
+
+                {/* Ko-fi Support Section */}
+                <div className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-[#1a1a2e]/80 to-[#16213e]/80 border border-primary/10 backdrop-blur-sm">
+                    <div className="flex flex-col items-center text-center">
+                        <Heart size={32} className="text-[#ff2ea3] fill-[#ff2ea3] mb-4 animate-pulse" />
+                        <h3 className="text-white text-xl font-bold mb-3">
+                            開発を応援してください
+                        </h3>
+                        <p className="text-slate-400 text-sm max-w-lg mb-6 leading-relaxed">
+                            これらのツールは無料で提供しています。もし気に入っていただけたら、Ko-fiで開発をサポートしていただけると嬉しいです。いただいたご支援は、新しいツールの開発や既存ツールの改善に活用させていただきます。
+                        </p>
+                        <a
+                            href="https://ko-fi.com/maa3684"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 px-10 py-5 rounded-xl bg-gradient-to-r from-[#ff5e5b] to-[#ff2ea3] hover:shadow-[0_0_40px_rgba(255,46,163,0.5)] hover:scale-105 transition-all duration-300"
+                        >
+                            <Heart size={24} className="text-white fill-white group-hover:animate-bounce" />
+                            <span className="text-white text-lg font-bold tracking-wide">
+                                Ko-fi で応援する
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>

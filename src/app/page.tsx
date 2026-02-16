@@ -9,8 +9,16 @@ import LearningPlatform from '@/components/LearningPlatform';
 import MyThumbnailer from '@/components/MyThumbnailer';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { getRssArticles, type RssArticle } from '@/lib/rss';
 
-export default function Home() {
+export default async function Home() {
+  let articles: RssArticle[] = [];
+  try {
+    articles = await getRssArticles();
+  } catch (error) {
+    console.error('Failed to fetch RSS:', error);
+  }
+
   return (
     <div className="bg-background-dark min-h-screen">
       <Header />
@@ -19,7 +27,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <ProductionTools />
-        <TechnicalArtifacts />
+        <TechnicalArtifacts articles={articles} />
         <AudioEngineering />
         <LearningPlatform />
         <MyThumbnailer />

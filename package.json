@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "deploy": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio}",
-    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio} --branch=preview"
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=${CLOUDFLARE_PROJECT_NAME:-maa-portfolio} --branch=preview",
+    "rss:fetch": "node scripts/fetch-rss.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -25,7 +26,7 @@
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
-    "baseline-browser-mapping": "^2.9.3",
+    "baseline-browser-mapping": "^2.9.19",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
     "postcss": "^8.5.6",
