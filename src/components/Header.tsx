@@ -1,11 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search, Zap, Laptop } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Header() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,13 +16,13 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { id: 'projects', label: 'PROJECTS' },
-    { id: 'skills', label: 'SKILLS' },
-    { id: 'tools', label: 'TOOLS' },
-    { id: 'blog', label: 'BLOG' },
-    { id: 'audio', label: 'AUDIO' },
-    { id: 'learning', label: 'LEARNING' },
-    { id: 'contact', label: 'CONTACT' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'tools', label: 'Tools' },
+    { id: 'blog', label: 'Blog' },
+    { id: 'audio', label: 'Audio' },
+    { id: 'learning', label: 'Online Tools' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const scrollTo = (id: string) => {
@@ -33,29 +33,36 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 px-6 lg:px-20 py-4 transition-all duration-300 ${isScrolled ? 'bg-background-dark/80 backdrop-blur-md border-b border-primary/20 shadow-lg' : 'bg-transparent border-transparent'
-          }`}
+        className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-20 py-4 transition-all duration-200"
+        style={{
+          background: isScrolled ? 'rgba(250, 250, 250, 0.95)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+          borderBottom: isScrolled ? '1px solid var(--border-light)' : '1px solid transparent'
+        }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo & Nav */}
+          {/* Logo */}
           <div className="flex items-center gap-12">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 cursor-pointer group"
+              whileHover={{ opacity: 0.7 }}
+              className="cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <Laptop size={24} className="text-primary group-hover:animate-pulse" />
-              <h2 className="text-white text-xl font-bold leading-tight tracking-tight uppercase font-display">
-                Cyber-Zen <span className="text-primary font-light">Nexus</span>
+              <h2
+                className="text-title"
+                style={{ color: 'var(--text-primary)', fontWeight: 600 }}
+              >
+                maa
               </h2>
             </motion.div>
 
+            {/* Navigation */}
             <nav className="hidden xl:flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="nav-link text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase"
+                  className="nav-link"
                 >
                   {item.label}
                 </button>
@@ -65,75 +72,84 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-6">
-            {/* HUD Language Switcher */}
-            <div className="hidden sm:flex items-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-lg">
+            {/* Language Switcher */}
+            <div
+              className="hidden sm:flex items-center gap-1 p-1 rounded"
+              style={{ background: 'var(--bg-secondary)' }}
+            >
               {(['ja', 'en', 'zh'] as const).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-2 py-0.5 text-[9px] font-bold font-mono rounded transition-all uppercase ${language === lang ? 'bg-primary text-background-dark' : 'text-slate-500 hover:text-primary'
-                    }`}
+                  className="px-3 py-1.5 text-small rounded transition-all"
+                  style={{
+                    background: language === lang ? 'var(--bg-primary)' : 'transparent',
+                    color: language === lang ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                    fontWeight: language === lang ? 500 : 400
+                  }}
                 >
                   {lang === 'ja' ? 'JP' : lang === 'en' ? 'EN' : 'CN'}
                 </button>
               ))}
             </div>
 
-            {/* HUD Search Emulation */}
-            <div className="hidden lg:flex items-center gap-3 px-4 py-2 bg-card-dark/60 border border-primary/20 rounded-lg focus-within:border-primary transition-all">
-              <Search size={14} className="text-primary/50" />
-              <input
-                type="text"
-                placeholder="Search Data Streams..."
-                className="bg-transparent border-none focus:ring-0 text-[10px] text-white placeholder:text-white/20 uppercase tracking-widest w-32 xl:w-48 font-mono"
-              />
-            </div>
-
+            {/* Contact Button */}
             <button
               onClick={() => scrollTo('contact')}
-              className="btn-primary hidden md:flex min-w-[120px] py-2.5 px-5"
+              className="btn-primary hidden md:flex"
             >
-              <Zap size={14} />
-              Connect
+              Contact
             </button>
 
-            <button onClick={() => setIsOpen(!isOpen)} className="xl:hidden text-primary">
+            {/* Mobile Menu */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="xl:hidden p-2"
+              style={{ color: 'var(--text-primary)' }}
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </header>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-40 bg-background-dark/98 backdrop-blur-xl xl:hidden p-10 flex flex-col justify-center items-center gap-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 xl:hidden flex flex-col justify-center items-center"
+            style={{ background: 'var(--bg-primary)' }}
           >
-            <nav className="flex flex-col items-center gap-8">
+            <nav className="flex flex-col items-center gap-6">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="text-3xl font-black text-white hover:text-primary transition-all uppercase tracking-tighter"
+                  className="text-headline transition-colors"
+                  style={{ color: 'var(--text-primary)' }}
                 >
                   {item.label}
                 </button>
               ))}
             </nav>
-            <div className="flex gap-4">
+
+            {/* Language Switcher Mobile */}
+            <div className="flex gap-4 mt-12">
               {(['ja', 'en', 'zh'] as const).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-6 py-2 text-xs font-bold border ${language === lang
-                    ? 'bg-primary border-primary text-background-dark'
-                    : 'border-primary/20 text-primary'
-                    }`}
+                  className="px-6 py-2 text-caption rounded transition-all"
+                  style={{
+                    background: language === lang ? 'var(--text-primary)' : 'transparent',
+                    color: language === lang ? 'var(--bg-primary)' : 'var(--text-secondary)',
+                    border: `1px solid ${language === lang ? 'var(--text-primary)' : 'var(--border-medium)'}`
+                  }}
                 >
-                  {lang === 'ja' ? 'JAPANESE' : lang === 'en' ? 'ENGLISH' : 'CHINESE'}
+                  {lang === 'ja' ? 'Japanese' : lang === 'en' ? 'English' : 'Chinese'}
                 </button>
               ))}
             </div>
