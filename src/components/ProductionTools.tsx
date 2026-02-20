@@ -185,11 +185,11 @@ export default function ProductionTools() {
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-3 mt-8">
-                                <button className="bg-primary/10 hover:bg-primary text-primary hover:text-background-dark border border-primary/30 px-4 py-3 rounded-lg text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
-                                    <Download size={14} /> GitHub
+                                <button className="group relative bg-primary/10 hover:bg-primary text-primary hover:text-background-dark border-2 border-primary/40 hover:border-primary px-4 py-3 rounded-lg text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 hover:shadow-[0_4px_20px_rgba(37,192,244,0.3)] hover:-translate-y-0.5 active:translate-y-0">
+                                    <Download size={14} className="transition-transform group-hover:scale-110" /> GitHub
                                 </button>
-                                <button className="bg-slate-800 hover:bg-slate-700 text-white border border-white/10 px-4 py-3 rounded-lg text-xs font-bold uppercase transition-all flex items-center justify-center gap-2">
-                                    <FileText size={14} /> Docs
+                                <button className="group relative bg-slate-800 hover:bg-slate-700 text-white border-2 border-slate-600 hover:border-slate-500 px-4 py-3 rounded-lg text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 hover:shadow-[0_4px_15px_rgba(255,255,255,0.1)] hover:-translate-y-0.5 active:translate-y-0">
+                                    <FileText size={14} className="transition-transform group-hover:scale-110" /> Docs
                                 </button>
                             </div>
                         </div>
@@ -205,7 +205,8 @@ export default function ProductionTools() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="bg-[#0d1518] rounded-xl border border-primary/10 overflow-hidden flex flex-col"
+                            whileHover={{ y: -4 }}
+                            className="bg-[#0d1518] rounded-xl border-2 border-primary/10 overflow-hidden flex flex-col transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_30px_rgba(37,192,244,0.1)]"
                         >
                             <div className="h-64 relative">
                                 <div
@@ -270,13 +271,21 @@ export default function ProductionTools() {
                                                 <a
                                                     href={tool.downloadUrl}
                                                     download
-                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    className="group font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 border-2 hover:-translate-y-0.5 active:translate-y-0"
                                                     style={{
                                                         backgroundColor: tool.accent,
-                                                        color: '#0a0f11'
+                                                        color: '#0a0f11',
+                                                        borderColor: tool.accent,
+                                                        boxShadow: `0 0 0 0 ${tool.accent}40`
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.boxShadow = `0 8px 25px ${tool.accent}50`;
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.boxShadow = `0 0 0 0 ${tool.accent}40`;
                                                     }}
                                                 >
-                                                    <Download size={14} /> Direct
+                                                    <Download size={14} className="transition-transform group-hover:scale-110" /> Direct
                                                 </a>
                                             )}
                                             {tool.boothUrl && (
@@ -284,28 +293,50 @@ export default function ProductionTools() {
                                                     href={tool.boothUrl}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 hover:opacity-80"
+                                                    className="group font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 border-2 hover:-translate-y-0.5 active:translate-y-0"
                                                     style={{
                                                         backgroundColor: tool.downloadUrl ? 'transparent' : tool.accent,
                                                         color: tool.downloadUrl ? tool.accent : '#0a0f11',
-                                                        border: tool.downloadUrl ? `1px solid ${tool.accent}40` : 'none'
+                                                        borderColor: tool.downloadUrl ? `${tool.accent}60` : tool.accent
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.borderColor = tool.accent;
+                                                        e.currentTarget.style.boxShadow = `0 4px 15px ${tool.accent}30`;
+                                                        if (tool.downloadUrl) {
+                                                            e.currentTarget.style.backgroundColor = `${tool.accent}15`;
+                                                        }
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.borderColor = tool.downloadUrl ? `${tool.accent}60` : tool.accent;
+                                                        e.currentTarget.style.boxShadow = 'none';
+                                                        if (tool.downloadUrl) {
+                                                            e.currentTarget.style.backgroundColor = 'transparent';
+                                                        }
                                                     }}
                                                 >
-                                                    <ExternalLink size={14} /> BOOTH
+                                                    <ExternalLink size={14} className="transition-transform group-hover:scale-110" /> BOOTH
                                                 </a>
                                             )}
                                         </div>
                                     ) : (
                                         <button
-                                            className="w-full font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                                            className="group w-full font-bold py-3 rounded-lg text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 border-2 hover:-translate-y-0.5 active:translate-y-0"
                                             style={{
                                                 backgroundColor: tool.id === 'interpolator' ? tool.accent : 'transparent',
                                                 color: tool.id === 'interpolator' ? '#0a0f11' : tool.accent,
-                                                border: tool.id === 'interpolator' ? 'none' : `1px solid ${tool.accent}40`
+                                                borderColor: tool.id === 'interpolator' ? tool.accent : `${tool.accent}60`
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.boxShadow = `0 4px 20px ${tool.accent}40`;
+                                                e.currentTarget.style.borderColor = tool.accent;
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.boxShadow = 'none';
+                                                e.currentTarget.style.borderColor = tool.id === 'interpolator' ? tool.accent : `${tool.accent}60`;
                                             }}
                                         >
-                                            {tool.id === 'interpolator' && <><Zap size={14} /> Download Plugin</>}
-                                            {tool.id === 'ae-plugin' && <><Code size={14} /> Get C++ SDK</>}
+                                            {tool.id === 'interpolator' && <><Zap size={14} className="transition-transform group-hover:scale-110" /> Download Plugin</>}
+                                            {tool.id === 'ae-plugin' && <><Code size={14} className="transition-transform group-hover:scale-110" /> Get C++ SDK</>}
                                         </button>
                                     )}
                                 </div>

@@ -1,12 +1,17 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
+import { ArrowRight, ChevronDown, Briefcase, Mail } from 'lucide-react';
 
 export default function Hero() {
   const { t } = useLanguage();
 
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section id="hero" className="relative pt-12 pb-16 lg:pt-24 lg:pb-32 px-6 lg:px-20 overflow-hidden bg-background-dark">
+    <section id="hero" className="relative pt-20 pb-24 lg:pt-32 lg:pb-40 px-6 lg:px-20 overflow-hidden bg-background-dark min-h-[90vh] flex flex-col justify-center">
       {/* Background Decorative Mesh Filter (simulating the holographic feel from code.html) */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
@@ -25,13 +30,37 @@ export default function Hero() {
               {t('heroTitleSuffix')}
             </span>
           </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed mb-6 font-display">
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed mb-10 font-display">
             {t('heroSubtitle')}
           </p>
+
+          {/* CTA Buttons - Clear Signifiers (Norman's Discoverability) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          >
+            <button
+              onClick={() => scrollTo('projects')}
+              className="btn-primary group min-w-[200px]"
+            >
+              <Briefcase size={16} />
+              <span>{t('viewProjects') || 'プロジェクトを見る'}</span>
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </button>
+            <button
+              onClick={() => scrollTo('contact')}
+              className="btn-secondary min-w-[200px]"
+            >
+              <Mail size={16} />
+              <span>{t('getInTouch') || 'お問い合わせ'}</span>
+            </button>
+          </motion.div>
         </motion.div>
 
         {/* HUD Elements as shown in the layout (simulated status bar) */}
-        <div className="mt-12 flex justify-center items-center gap-8 font-mono text-[9px] text-primary/40 uppercase tracking-[0.4em]">
+        <div className="mt-8 flex justify-center items-center gap-8 font-mono text-[9px] text-primary/40 uppercase tracking-[0.4em]">
           <div className="flex items-center gap-2">
             <span className="size-1 bg-primary rounded-full animate-ping" />
             System.Link // Establish
@@ -45,6 +74,22 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll Indicator - Visual Affordance (Norman's Signifier) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+        onClick={() => scrollTo('projects')}
+      >
+        <span className="text-[10px] font-mono text-primary/50 uppercase tracking-widest group-hover:text-primary transition-colors">
+          Scroll
+        </span>
+        <div className="scroll-indicator p-2 rounded-full border border-primary/30 group-hover:border-primary transition-colors">
+          <ChevronDown size={20} className="text-primary/50 group-hover:text-primary transition-colors" />
+        </div>
+      </motion.div>
 
       {/* Hero Divider (Thin glow line as seen in several folder layouts) */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />

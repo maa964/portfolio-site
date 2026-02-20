@@ -82,18 +82,20 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 bg-background-dark px-6 lg:px-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Filter System */}
+        {/* Filter System - Enhanced Signifiers */}
         <div className="flex flex-wrap gap-3 mb-12 justify-center">
           {filters.map((f) => (
             <button
               key={f.id}
               onClick={() => setActiveFilter(f.id)}
-              className={`px-6 py-2 rounded-full border text-sm font-medium flex items-center gap-2 transition-all ${activeFilter === f.id
-                ? `border-primary bg-primary/10 text-primary`
-                : 'border-slate-700 hover:border-primary hover:text-primary bg-card-dark text-slate-400'
+              className={`px-6 py-2.5 rounded-full border-2 text-sm font-medium flex items-center gap-2 transition-all duration-200 ${activeFilter === f.id
+                ? `border-primary bg-primary/15 text-primary shadow-[0_0_15px_rgba(37,192,244,0.25)]`
+                : 'border-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 bg-card-dark text-slate-400 hover:-translate-y-0.5'
                 }`}
             >
-              {f.icon}
+              <span className={`transition-transform ${activeFilter === f.id ? 'scale-110' : ''}`}>
+                {f.icon}
+              </span>
               {f.label}
             </button>
           ))}

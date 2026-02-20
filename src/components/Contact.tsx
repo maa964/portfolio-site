@@ -106,39 +106,40 @@ export default function Contact() {
             </div>
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono">
-                    <span className="text-primary/50">&gt;</span> {t('username')}:_
+                <div className="space-y-2 group">
+                  <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono transition-colors group-focus-within:text-white">
+                    <span className="text-primary/50 group-focus-within:text-primary">&gt;</span> {t('username')}:_
                   </label>
                   <input
-                    className="w-full bg-black/40 border-b border-primary/30 border-t-0 border-x-0 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono py-3 text-sm"
+                    className="w-full bg-black/40 border-2 border-primary/20 rounded-lg focus:border-primary focus:ring-0 focus:shadow-[0_0_15px_rgba(37,192,244,0.2)] text-white placeholder:text-primary/30 transition-all font-mono py-3 px-4 text-sm hover:border-primary/40"
                     placeholder="[ENTER IDENTITY]"
                     type="text"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono">
-                    <span className="text-primary/50">&gt;</span> {t('emailCoordinates')}:_
+                <div className="space-y-2 group">
+                  <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono transition-colors group-focus-within:text-white">
+                    <span className="text-primary/50 group-focus-within:text-primary">&gt;</span> {t('emailCoordinates')}:_
                   </label>
                   <input
-                    className="w-full bg-black/40 border-b border-primary/30 border-t-0 border-x-0 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono py-3 text-sm"
+                    className="w-full bg-black/40 border-2 border-primary/20 rounded-lg focus:border-primary focus:ring-0 focus:shadow-[0_0_15px_rgba(37,192,244,0.2)] text-white placeholder:text-primary/30 transition-all font-mono py-3 px-4 text-sm hover:border-primary/40"
                     placeholder="[USER@NODE.DOMAIN]"
                     type="email"
                   />
                 </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono">
-                  <span className="text-primary/50">&gt;</span> {t('dataPayload')}:_
+              <div className="space-y-2 group">
+                <label className="text-[10px] font-bold text-primary flex items-center gap-2 font-mono transition-colors group-focus-within:text-white">
+                  <span className="text-primary/50 group-focus-within:text-primary">&gt;</span> {t('dataPayload')}:_
                 </label>
-                <div className="relative group">
+                <div className="relative">
                   <textarea
-                    className="w-full bg-black/40 border border-primary/20 focus:border-primary focus:ring-0 text-white placeholder:text-primary/20 transition-all font-mono p-4 rounded-lg resize-none text-sm"
+                    className="w-full bg-black/40 border-2 border-primary/20 focus:border-primary focus:ring-0 focus:shadow-[0_0_20px_rgba(37,192,244,0.15)] text-white placeholder:text-primary/30 transition-all font-mono p-4 rounded-lg resize-none text-sm hover:border-primary/40"
                     placeholder="[WRITE MESSAGE STRING]"
                     rows={4}
                   />
-                  <div className="absolute bottom-2 right-2 flex items-center gap-2 opacity-30 group-focus-within:opacity-100">
-                    <span className="text-[9px] text-primary/60 font-mono">Payload: Logged</span>
+                  <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-30 group-focus-within:opacity-100 transition-opacity">
+                    <span className="text-[9px] text-primary font-mono">Payload: Ready</span>
+                    <span className="size-1.5 bg-primary rounded-full animate-pulse" />
                   </div>
                 </div>
               </div>
@@ -152,10 +153,10 @@ export default function Contact() {
                   <span className="text-primary/20">|</span>
                   <div className="text-primary/60">Latency: 24ms</div>
                 </div>
-                <button type="submit" className="group relative flex min-w-[240px] items-center justify-center overflow-hidden rounded bg-primary px-8 py-4 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                <button type="submit" className="group relative flex min-w-[240px] items-center justify-center overflow-hidden rounded-lg bg-primary px-8 py-4 transition-all hover:scale-[1.02] active:scale-[0.98] border-2 border-primary hover:shadow-[0_8px_30px_rgba(37,192,244,0.4)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30">
                   <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12" />
                   <span className="relative text-xs font-black tracking-[0.2em] text-background-dark uppercase font-display">Initiate Transmission</span>
-                  <Send size={14} className="ml-2 text-background-dark relative" />
+                  <Send size={14} className="ml-3 text-background-dark relative transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             </form>

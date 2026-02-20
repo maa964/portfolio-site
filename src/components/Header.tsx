@@ -50,12 +50,12 @@ export default function Header() {
               </h2>
             </motion.div>
 
-            <nav className="hidden xl:flex items-center gap-10">
+            <nav className="hidden xl:flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="text-white/70 hover:text-primary text-[10px] font-bold tracking-[0.2em] transition-all uppercase"
+                  className="nav-link text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase"
                 >
                   {item.label}
                 </button>
@@ -91,7 +91,7 @@ export default function Header() {
 
             <button
               onClick={() => scrollTo('contact')}
-              className="hidden md:flex min-w-[120px] items-center justify-center rounded bg-primary text-background-dark text-[10px] font-black uppercase tracking-[0.2em] h-10 px-6 hover:shadow-[0_0_20px_rgba(37,192,244,0.5)] transition-all gap-2"
+              className="btn-primary hidden md:flex min-w-[120px] py-2.5 px-5"
             >
               <Zap size={14} />
               Connect

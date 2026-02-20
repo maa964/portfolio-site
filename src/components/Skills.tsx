@@ -200,12 +200,14 @@ export default function Skills() {
             </div>
           </motion.div>
 
-          <button className="glass-panel p-6 rounded-xl flex items-center justify-between group cursor-pointer hover:border-primary transition-all">
+          <button className="glass-panel p-6 rounded-xl flex items-center justify-between group cursor-pointer border-2 border-transparent hover:border-primary/50 hover:bg-primary/5 hover:shadow-[0_4px_20px_rgba(37,192,244,0.15)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0">
             <div className="flex flex-col text-left">
               <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest font-mono">Active_Protocol</span>
               <span className="text-sm font-bold text-white mt-1 group-hover:text-primary transition-colors font-display">NEURAL_NEXUS_SYNC</span>
             </div>
-            <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
+            <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+              <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
+            </div>
           </button>
         </div>
       </div>
