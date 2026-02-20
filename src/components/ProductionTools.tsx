@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { Code, Zap, Settings, Download, FileText, Terminal, ChevronRight, Timer, ExternalLink, Heart, ListTodo } from 'lucide-react';
+import { Code, Zap, Settings, Download, FileText, Terminal, ChevronRight, Timer, ExternalLink, Heart, ListTodo, FileVideo } from 'lucide-react';
 
 export default function ProductionTools() {
     const { t } = useLanguage();
@@ -76,6 +76,19 @@ export default function ProductionTools() {
             accent: '#25c0f4',
             boothUrl: 'https://maa964.booth.pm/items/7977565',
             image: '/images/taskmanager01.jpg'
+        },
+        {
+            id: 'media-converter',
+            title: 'いろんなメディア変換ツール',
+            subtitle: 'Media Converter',
+            icon: <FileVideo size={24} />,
+            desc: '画像・動画を高速に一括変換できるWindows向けデスクトップアプリ。NVIDIA CUDA GPU対応で高速処理、AI画像強化機能搭載。PNG、JPG、HEIC、WebP、SVGなどの画像形式と、MP4、MOV、WebMなどの動画形式に対応。',
+            compatibility: 'Windows',
+            interface: 'Desktop App',
+            engine: 'CUDA Accelerated',
+            color: 'accent-magenta',
+            accent: '#ff2ea3',
+            boothUrl: 'https://maa964.booth.pm/items/8007334'
         }
     ];
 
