@@ -354,7 +354,7 @@ export default function ProductionTools() {
                     style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-light)' }}
                 >
                     <p className="text-caption mb-4" style={{ color: 'var(--text-secondary)' }}>
-                        これらのツールは無料で提供しています。
+                        各ツールはBOOTHにて配布・販売中です。制作活動のご支援もお待ちしています。
                     </p>
                     <a
                         href="https://ko-fi.com/maa3684"

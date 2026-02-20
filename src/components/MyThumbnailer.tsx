@@ -42,7 +42,7 @@ export default function MyThumbnailer() {
                             Visual Optimization Tool
                         </div>
                         <h2 className="text-5xl md:text-6xl font-black tracking-tight leading-none uppercase text-white">
-                            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-magenta to-primary italic">Thumbnailer</span>
+                            Thumbnail Maker <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-magenta to-primary italic">Thumbnailer</span>
                         </h2>
                     </div>
                     <p className="text-slate-400 text-lg max-w-md leading-relaxed font-display">

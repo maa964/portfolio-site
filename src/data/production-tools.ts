@@ -38,20 +38,20 @@ export interface Tool {
 export const tools: Tool[] = [
     {
         id: 'upscaler',
-        title: 'Video Upscaler',
-        summary: '低解像度映像を4K品質に向上。処理速度24.5 FPS、エンタープライズ導入実績あり。',
+        title: 'Unified Video Enhancer',
+        summary: 'AIノイズ除去と超解像アップスケーリング（2x〜4x）を搭載。フレーム補間を省略した軽量・高速版。',
         meta: {
-            period: '2023.06 - 2024.02',
-            scope: ['設計', '実装', 'テスト'],
-            technology: ['Python', 'PyTorch 2.1', 'CUDA', 'Real-ESRGAN']
+            period: '2024.08 - 2024.10',
+            scope: ['企画', '設計', '実装'],
+            technology: ['Python', 'PyTorch', 'CUDA', 'Real-ESRGAN']
         },
         specs: [
-            { label: 'Architecture', value: 'Real-ESRGAN' },
-            { label: 'Scale Factor', value: '4x' },
-            { label: 'Framework', value: 'PyTorch 2.1' },
-            { label: 'Performance', value: '24.5 FPS @ 1080p' },
-            { label: 'Memory', value: '4GB VRAM min' },
-            { label: 'Precision', value: 'FP16 / Mixed' }
+            { label: 'Platform', value: 'Windows 10/11' },
+            { label: 'Scale Factor', value: '2x - 4x' },
+            { label: 'GPU', value: 'NVIDIA CUDA' },
+            { label: 'Features', value: 'Denoising / Upscale' },
+            { label: 'Batch', value: 'Supported' },
+            { label: 'AI Reduction', value: 'Natural Look' }
         ],
         typography: [
             { element: 'Heading', font: 'Inter', size: '20px', lineHeight: '1.4', weight: '500' },
@@ -63,7 +63,8 @@ export const tools: Tool[] = [
             { hex: '#16a34a', role: 'Success State', name: 'Process Complete' },
             { hex: '#dc2626', role: 'Error State', name: 'Process Failed' },
             { hex: '#f5f5f5', role: 'Background', name: 'Surface' }
-        ]
+        ],
+        boothUrl: 'https://maa964.booth.pm/items/8010038'
     },
     {
         id: 'interpolator',

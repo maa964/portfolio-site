@@ -24,18 +24,37 @@ export default function Footer() {
 
         {/* Links */}
         <div className="flex gap-8">
-          {['GitHub', 'Twitter', 'Email'].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-caption transition-colors"
-              style={{ color: 'var(--text-secondary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-            >
-              {link}
-            </a>
-          ))}
+          <a
+            href="https://github.com/maa964/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-caption transition-colors"
+            style={{ color: 'var(--text-secondary)' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+          >
+            GitHub
+          </a>
+          <a
+            href="https://x.com/maa77297693"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-caption transition-colors"
+            style={{ color: 'var(--text-secondary)' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+          >
+            Twitter/X
+          </a>
+          <a
+            href="#contact"
+            className="text-caption transition-colors"
+            style={{ color: 'var(--text-secondary)' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+          >
+            Email
+          </a>
         </div>
 
         {/* Back to Top */}
