@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Download, Monitor, Apple, Laptop, Package, Clock, HardDrive, Timer, Scale, AlertTriangle, Coffee } from 'lucide-react';
+import { Download, Monitor, Apple, Laptop, Package, Clock, HardDrive, Timer, Scale, AlertTriangle, Coffee, ExternalLink, FileVideo } from 'lucide-react';
 
 interface AppDownload {
   id: string;
@@ -32,6 +32,19 @@ const apps: AppDownload[] = [
     ],
     tags: ['Productivity', 'Timer', 'Open Source'],
     featured: true,
+  },
+  {
+    id: 'media-converter',
+    name: 'いろんなメディア変換ツール',
+    description: '画像・動画を高速に一括変換できるWindows向けデスクトップアプリ。NVIDIA CUDA GPU対応で高速処理、AI画像強化機能搭載。PNG、JPG、HEIC、WebP、SVGなどの画像形式と、MP4、MOV、WebMなどの動画形式に対応。ドラッグ&ドロップでの簡単操作とバッチ処理機能を備えています。',
+    version: 'v1.1.0',
+    lastUpdated: '2025-02-20',
+    license: 'Proprietary',
+    platforms: [
+      { name: 'BOOTH', icon: 'windows', downloadUrl: 'https://maa964.booth.pm/items/8007334', fileSize: '無料〜' },
+    ],
+    tags: ['Media', 'Converter', 'GPU Accelerated'],
+    featured: false,
   },
 ];
 
@@ -119,7 +132,13 @@ export default function Downloads() {
                         flexShrink: 0,
                       }}
                     >
-                      <Timer size={28} style={{ color: '#22d3ee' }} />
+                      {app.id === 'pomodro-timer' ? (
+                        <Timer size={28} style={{ color: '#22d3ee' }} />
+                      ) : app.id === 'media-converter' ? (
+                        <FileVideo size={28} style={{ color: '#22d3ee' }} />
+                      ) : (
+                        <Package size={28} style={{ color: '#22d3ee' }} />
+                      )}
                     </div>
                     <div>
                       <h3
@@ -176,6 +195,8 @@ export default function Downloads() {
                     <a
                       key={platform.name}
                       href={platform.downloadUrl}
+                      target={platform.downloadUrl.startsWith('http') ? '_blank' : undefined}
+                      rel={platform.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -209,7 +230,11 @@ export default function Downloads() {
                           </p>
                         </div>
                       </div>
-                      <Download size={20} style={{ color: '#06b6d4' }} />
+                      {platform.downloadUrl.startsWith('http') ? (
+                        <ExternalLink size={20} style={{ color: '#06b6d4' }} />
+                      ) : (
+                        <Download size={20} style={{ color: '#06b6d4' }} />
+                      )}
                     </a>
                   ))}
                 </div>
