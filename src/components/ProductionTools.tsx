@@ -274,11 +274,22 @@ export default function ProductionTools() {
                             )}
 
                             {/* Actions */}
-                            {(tool.downloadUrl || tool.boothUrl) && (
+                            {(tool.downloadUrl || tool.boothUrl || tool.githubUrl) && (
                                 <div
                                     className="px-6 py-4 flex gap-3"
                                     style={{ borderTop: '1px solid var(--border-light)' }}
                                 >
+                                    {tool.githubUrl && (
+                                        <a
+                                            href={tool.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-primary"
+                                        >
+                                            <ExternalLink size={14} />
+                                            <span>GitHub</span>
+                                        </a>
+                                    )}
                                     {tool.downloadUrl && (
                                         <a
                                             href={tool.downloadUrl}

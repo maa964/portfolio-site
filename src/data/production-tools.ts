@@ -33,9 +33,29 @@ export interface Tool {
     colors?: ColorSpec[];
     downloadUrl?: string;
     boothUrl?: string;
+    githubUrl?: string;
 }
 
 export const tools: Tool[] = [
+    {
+        id: 'creative-suite',
+        title: 'Creative Suite',
+        summary: 'OSSベースのクリエイティブツール統合環境。画像・動画・ベクター編集、AI Studio を搭載。PRs welcome!',
+        meta: {
+            period: '2024.10 - Present',
+            scope: ['企画', '設計', '実装', 'OSS'],
+            technology: ['Python 3.12', 'PySide6', 'FastAPI', 'Pillow', 'NumPy']
+        },
+        specs: [
+            { label: 'License', value: 'MIT' },
+            { label: 'Platform', value: 'Cross-platform' },
+            { label: 'UI Framework', value: 'PySide6' },
+            { label: 'Apps', value: 'Photo / Video / Vector' },
+            { label: 'AI Studio', value: 'SD / Whisper' },
+            { label: 'Plugin API', value: 'FastAPI + JWT' }
+        ],
+        githubUrl: 'https://github.com/maa964/creative-suite/'
+    },
     {
         id: 'upscaler',
         title: 'Unified Video Enhancer',
