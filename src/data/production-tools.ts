@@ -133,7 +133,6 @@ export const tools: Tool[] = [
             { label: 'Framework', value: 'Electron' },
             { label: 'Size', value: '< 50MB' }
         ],
-        downloadUrl: '/downloads/PomodroTimer.zip',
         boothUrl: 'https://maa964.booth.pm/items/7977463'
     },
     {
