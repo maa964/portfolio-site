@@ -31,15 +31,18 @@ export default function Hero() {
           </p>
 
           {/* Main heading - clean typography */}
-          <h1
-            className="text-display mb-8"
+          <h1 className="sr-only">AI/MLエンジニア & ビデオクリエイター | maa</h1>
+          <div
+            className="text-display mb-8 font-bold"
             style={{ color: 'var(--text-primary)' }}
+            role="heading"
+            aria-level={2}
           >
             {t('heroTitlePrefix')}{' '}
             <span style={{ color: 'var(--text-secondary)' }}>
               {t('heroTitleSuffix')}
             </span>
-          </h1>
+          </div>
 
           {/* Subtitle - readable, not decorated */}
           <p

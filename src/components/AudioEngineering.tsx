@@ -2,38 +2,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { Play, Pause, Volume2, Maximize, BarChart3, Zap, Radio, Sliders, Activity } from 'lucide-react';
+import { Play, Pause, Volume2, Maximize, BarChart3, Zap, Radio, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { audioServices as services } from '@/data/audio-engineering';
 
 export default function AudioEngineering() {
   const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const services = [
-    {
-      id: 'mix',
-      title: 'Mix Engineering',
-      subtitle: 'Architectural Balance',
-      icon: <Sliders size={28} />,
-      desc: 'マルチトラックのバランス調整、空間配置、そして周波数のカービング。生の録音を、外科手術のような精密さで、没入感のある音の風景へと変貌させます。',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvQDxXp40tBmPGx6XmeMZ9v4mK0hupLMrGvuyRvhbdMtzPa7I8kb9goZbg-_zzSV1xImOsIC4N-OWCW1HMrZSJ7BNckzOAOz1qHSOeyRAOqbizt5IcWdzh44qZk7iUIJo0-vtCZn0xnIMrRw9271rr_WaKBKIkNJLm7HicjMaZFqg_6SLBPiuwObF9LKpDeH3kPXQtgSnHeti0Gq6Ia5-iNOMpWkXp6CZtPxjEJyevsGn2C97mR6GwwuVfsM572TYdvLkvw5adS8o',
-      gear: ['UAD APOLLO', 'WAVES', 'SOUNDTOYS'],
-      color: 'primary',
-      level: 65,
-      accent: '#25c0f4'
-    },
-    {
-      id: 'master',
-      title: 'Mastering',
-      subtitle: 'Final Optimization',
-      icon: <Activity size={28} />,
-      desc: '音量、ステレオ幅、そして音色の一貫性を最終調整します。あらゆる再生システムで完璧なサウンドを実現します。',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLgh7A6VOQCaGsBh_YryXBw5oGOW4BM3LbXlIA0TtMtIWOMMlOGipdSetnkWngUV3ve849OweL2TIpQ7sMSebCqlJWY7fjCcwix4znv7OkxbYzpOmeYNqoBnuYWV-vVu4_CJcsFg6FfF0rkpFbtBDIYfTPuJOiGAh9U9FVws4_3G4ha7mrn2ZvsZqjft5S72tIeOhFcNo-srRpNXfCwWEkPiCg7XuusC55XwbSsT-Fgi7IF3whgRQuSeDV-7WeSvuL3fvqYE50IqM',
-      gear: ['FABFILTER', 'IZOTOPE', 'WEISS'],
-      color: 'accent-magenta',
-      level: 88,
-      accent: '#ff2ea3'
-    }
-  ];
 
   return (
     <section id="audio" className="py-24 bg-[#0a0f11] relative overflow-hidden min-h-screen">
@@ -46,12 +21,16 @@ export default function AudioEngineering() {
             <Radio size={12} className="animate-pulse" />
             Aural Architectures
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter font-display italic">
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter font-display italic">
             Sound Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-magenta">Services</span>
-          </h1>
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto font-display leading-relaxed">
+          </h2>
+          <p className="text-slate-400 text-lg max-w-3xl mx-auto font-display leading-relaxed mb-8">
             現代メディアのための高忠実度音響彫刻。AIによる分析とアナログの温かみを融合し、没入感のある聴覚体験を創造します
           </p>
+          <Link href="/mix-mastering" className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:border-primary/50 transition-all rounded-full uppercase tracking-widest font-bold text-xs group">
+            <span>View Full Details</span>
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         {/* Audio Preview Interface (Main Feature) */}
@@ -169,7 +148,7 @@ export default function AudioEngineering() {
                     color: s.accent
                   }}
                 >
-                  {s.icon}
+                  <s.icon size={28} />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white tracking-tight font-display">{s.title}</h3>

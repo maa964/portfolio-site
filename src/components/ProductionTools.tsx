@@ -359,24 +359,6 @@ export default function ProductionTools() {
                     </div>
                 </footer>
 
-                {/* Support Section */}
-                <div
-                    className="mt-8 p-6 rounded-lg text-center"
-                    style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-light)' }}
-                >
-                    <p className="text-caption mb-4" style={{ color: 'var(--text-secondary)' }}>
-                        各ツールはBOOTHにて配布・販売中です。制作活動のご支援もお待ちしています。
-                    </p>
-                    <a
-                        href="https://ko-fi.com/maa3684"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary inline-flex"
-                    >
-                        <span>Support on Ko-fi</span>
-                        <ExternalLink size={14} />
-                    </a>
-                </div>
             </div>
         </section>
     );

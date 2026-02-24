@@ -1,0 +1,7 @@
+# maa | AI/ML Engineer & Video Creator
+
+## About
+AI/ML Engineer specializing in video processing, automation workflows, and GPU-accelerated systems. Proficient in Python, CUDA, n8n, and Docker.
+
+## Contact & Links
+- Website: https://maa-create.com

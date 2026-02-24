@@ -95,7 +95,7 @@ export default function PortfolioPageLayout({ pageId }: PortfolioPageParams) {
                     {/* Panel Header */}
                     <div className="p-8 lg:p-10 flex justify-between items-start border-b border-primary/10">
                         <div>
-                            <h1 className="text-white text-4xl font-black mb-2 tracking-tighter uppercase italic">{title}</h1>
+                            <h2 className="text-white text-4xl font-black mb-2 tracking-tighter uppercase italic">{title}</h2>
                             <p className="text-primary/60 text-[10px] font-mono uppercase tracking-[0.3em] font-bold">TYPE: {currentPageData.category === 'A' ? 'GEN_VIDEO_SYNTH' : 'NEURAL_ARCH_V1'}</p>
                         </div>
                         <Link href="/" className="size-10 flex items-center justify-center rounded border border-accent-magenta/30 text-accent-magenta hover:bg-accent-magenta/10 transition-all">

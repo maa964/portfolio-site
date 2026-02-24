@@ -23,6 +23,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "maa",
+              "url": "https://maa-create.com",
+              "jobTitle": "AI/ML Engineer & Video Creator",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "maa"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );

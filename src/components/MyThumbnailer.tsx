@@ -1,25 +1,9 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ExternalLink, Layout, Sparkles, MousePointer2, ArrowRight, Layers } from 'lucide-react';
+import { ExternalLink, Layout, ArrowRight } from 'lucide-react';
+import { thumbnailerFeatures as features } from '@/data/my-thumbnailer';
 
 export default function MyThumbnailer() {
-    const features = [
-        {
-            icon: <Sparkles size={20} />,
-            title: 'AI-Enhanced Design',
-            desc: '最新のAI技術を活用して、クリック率を最大化する魅力的なサムネイルを瞬時に生成'
-        },
-        {
-            icon: <Layers size={20} />,
-            title: 'A/B Testing Flow',
-            desc: '複数のバリエーションをアップロードし、最も効果的なデザインをデータに基づいて選定'
-        },
-        {
-            icon: <MousePointer2 size={20} />,
-            title: 'Intuitive Interface',
-            desc: '直感的なドラッグ＆ドロップ操作で、誰でもプロフェッショナルな品質を実現'
-        }
-    ];
 
     return (
         <section id="thumbnailer" className="py-24 bg-gradient-to-b from-[#0d1518] to-[#0a0f11] relative overflow-hidden">
@@ -113,7 +97,7 @@ export default function MyThumbnailer() {
                                     className="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5 group"
                                 >
                                     <div className="size-12 rounded-xl bg-accent-magenta/10 border border-accent-magenta/20 flex items-center justify-center text-accent-magenta group-hover:bg-accent-magenta group-hover:text-background-dark transition-all flex-shrink-0">
-                                        {feature.icon}
+                                        <feature.icon size={20} />
                                     </div>
                                     <div>
                                         <h3 className="text-white font-bold text-lg mb-1">{feature.title}</h3>

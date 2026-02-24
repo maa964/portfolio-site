@@ -24,12 +24,12 @@ export default function NotFound() {
                     Error Code: 404
                 </p>
 
-                <h1
+                <h2
                     className="text-display mb-6"
                     style={{ color: 'var(--text-primary)' }}
                 >
                     Page Not Found
-                </h1>
+                </h2>
 
                 <div
                     className="w-12 h-[1px] mx-auto mb-8"

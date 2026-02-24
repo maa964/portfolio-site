@@ -13,9 +13,9 @@ export default function MixMasteringPage() {
 
                     {/* Text Content */}
                     <div className="space-y-6">
-                        <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                        <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
                             Mix & Mastering Engineer
-                        </h1>
+                        </h2>
                         <p className="text-lg text-slate-300 leading-relaxed">
                             Creating sonic depth and clarity for your music.
                             Specializing in balancing frequencies, enhancing dynamics, and delivering broadcast-ready audio.

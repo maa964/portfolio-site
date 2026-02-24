@@ -2,21 +2,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-
-const skills = [
-  { label: 'AI/ML Development', value: 92 },
-  { label: 'Video Production', value: 85 },
-  { label: 'Workflow Automation', value: 78 },
-  { label: 'Creative Direction', value: 82 },
-  { label: 'Prompt Engineering', value: 96 },
-];
-
-const techStack = [
-  { category: 'Languages', items: ['Python', 'TypeScript', 'C++'] },
-  { category: 'ML/AI', items: ['PyTorch', 'TensorFlow', 'Diffusion Models'] },
-  { category: 'Tools', items: ['After Effects', 'DaVinci Resolve', 'Blender'] },
-  { category: 'Infrastructure', items: ['Docker', 'AWS', 'CUDA'] },
-];
+import { skillsData as skills, techStackData as techStack } from '@/data/skills';
 
 export default function Skills() {
   const { t } = useLanguage();

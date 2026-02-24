@@ -1,28 +1,11 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { ExternalLink, BookOpen, Zap, Target, ArrowRight } from 'lucide-react';
+import { ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
+import { learningFeatures as features } from '@/data/learning-platform';
 
 export default function LearningPlatform() {
     const { t } = useLanguage();
-
-    const features = [
-        {
-            icon: <BookOpen size={20} />,
-            title: 'クリエイター向け学習',
-            desc: 'AI/ML、映像制作、音響エンジニアリングの実践的なチュートリアル'
-        },
-        {
-            icon: <Zap size={20} />,
-            title: '実践的なツール',
-            desc: '現場で使える技術とワークフローを体系的に学習'
-        },
-        {
-            icon: <Target size={20} />,
-            title: '継続的な更新',
-            desc: '最新のクリエイティブツールと技術を常にアップデート'
-        }
-    ];
 
     return (
         <section id="learning" className="py-24 bg-gradient-to-b from-[#0a0f11] to-[#0d1518] relative overflow-hidden">
@@ -86,7 +69,7 @@ export default function LearningPlatform() {
                                         className="flex gap-4 group"
                                     >
                                         <div className="size-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-all flex-shrink-0">
-                                            {feature.icon}
+                                            <feature.icon size={20} />
                                         </div>
                                         <div>
                                             <h3 className="text-white font-bold text-lg mb-1">{feature.title}</h3>

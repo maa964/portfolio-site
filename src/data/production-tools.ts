@@ -83,8 +83,7 @@ export const tools: Tool[] = [
             { hex: '#16a34a', role: 'Success State', name: 'Process Complete' },
             { hex: '#dc2626', role: 'Error State', name: 'Process Failed' },
             { hex: '#f5f5f5', role: 'Background', name: 'Surface' }
-        ],
-        boothUrl: 'https://maa964.booth.pm/items/8010038'
+        ]
     },
     {
         id: 'interpolator',
