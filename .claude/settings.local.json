@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:note.com)",
       "Bash(npm install:*)",
-      "WebFetch(domain:maa964.booth.pm)"
+      "WebFetch(domain:maa964.booth.pm)",
+      "Bash(ffmpeg:*)"
     ]
   }
 }
