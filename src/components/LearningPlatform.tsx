@@ -83,28 +83,43 @@ export default function LearningPlatform() {
                             <div className="relative">
                                 <div className="p-8 bg-gradient-to-br from-primary/10 to-accent-magenta/10 rounded-xl border border-primary/20 backdrop-blur-sm">
                                     <div className="mb-6">
-                                        <div className="inline-block px-3 py-1 mb-4 rounded bg-primary/20 border border-primary/30">
-                                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest font-bold">
-                                                learning-tools-orpin.vercel.app
-                                            </span>
-                                        </div>
                                         <h3 className="text-2xl font-bold text-white mb-3">
-                                            今すぐアクセス
+                                            学習プラットフォーム一覧
                                         </h3>
                                         <p className="text-slate-300 text-sm leading-relaxed mb-6">
                                             無料で利用できる学習リソースとツールを今すぐ体験してください。
                                         </p>
                                     </div>
 
-                                    <a
-                                        href="https://learning-tools-orpin.vercel.app/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="group relative inline-flex items-center gap-3 w-full justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-background-dark font-bold rounded-lg transition-all shadow-[0_0_30px_rgba(37,192,244,0.3)] hover:shadow-[0_0_40px_rgba(37,192,244,0.5)]"
-                                    >
-                                        <span className="text-sm uppercase tracking-wider">プラットフォームを開く</span>
-                                        <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    </a>
+                                    <div className="space-y-4">
+                                        <a
+                                            href="https://programming-learn-site.vercel.app/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
+                                        >
+                                            <div className="flex flex-col text-left">
+                                                <span className="text-sm font-bold text-primary">Programming Learn</span>
+                                                <span className="text-[10px] text-slate-400 font-mono mt-1">programming-learn-site.vercel.app</span>
+                                            </div>
+                                            <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        </a>
+
+                                        <a
+                                            href="https://learning-tools-orpin.vercel.app/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
+                                        >
+                                            <div className="flex flex-col text-left">
+                                                <span className="text-sm font-bold text-primary">Learning Tools</span>
+                                                <span className="text-[10px] text-slate-400 font-mono mt-1">learning-tools-orpin.vercel.app</span>
+                                            </div>
+                                            <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        </a>
+
+
+                                    </div>
 
                                     {/* Stats */}
                                     <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10">
@@ -144,15 +159,28 @@ export default function LearningPlatform() {
                             Platform Online • Last Updated: 2026-02-06
                         </span>
                     </div>
-                    <a
-                        href="https://learning-tools-orpin.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group"
-                    >
-                        <span className="text-sm font-medium">詳細を見る</span>
-                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    <div className="flex items-center gap-4">
+                        <a
+                            href="https://programming-learn-site.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors text-sm font-medium flex items-center gap-1 group"
+                        >
+                            Programming
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </a>
+                        <span className="text-white/20">|</span>
+                        <a
+                            href="https://learning-tools-orpin.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors text-sm font-medium flex items-center gap-1 group"
+                        >
+                            Tools
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </a>
+
+                    </div>
                 </motion.div>
             </div>
 
