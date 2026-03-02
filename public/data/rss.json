@@ -1,5 +1,12 @@
 [
   {
+    "id": "N5A67F22",
+    "title": "Github CopilotとCopilot CLIがいつの間にか最強になっていたので使いこなす　Part2 ーーVS Code vs Cursor",
+    "link": "https://note.com/maa964/n/n5a67f222d1bb",
+    "pubDate": "2026.03.02",
+    "description": "はじめに：「コードを書く」時代は、もう終わった2026年の今、AIとコードを書くという行為は、もはや従来の「プログラミング」ではありません。キーボードを叩いてfor文やif文を一行ずつ紡いでいた時代は、静かに、しかし確実に過去のものになりつつあります。続きをみる"
+  },
+  {
     "id": "ND8E8523",
     "title": "Github CopilotとCopilot CLIがいつの間にか最強になっていたので使いこなす　Part1",
     "link": "https://note.com/maa964/n/nd8e852369fc5",
@@ -166,12 +173,5 @@
     "link": "https://note.com/maa964/n/n84d330f829a3",
     "pubDate": "2026.02.09",
     "description": "「AIに仕事が奪われる」という漠然とした不安を抱えている方は少なくありません。しかし、今まさに起きている変化の本質は「代替」ではなく「価値の移動」です。2026年、ChatGPTをはじめとする大規模言語モデル（LLM）は、単に「知っていることを教えるツール」から「未知の答えを導き出すパートナー」へと劇的な進化を遂げようとしています。続きをみる"
-  },
-  {
-    "id": "NCE9E1F6",
-    "title": "AIの「ググる力」をどう測る？ DeepResearchEvalが示すAI評価の新しい地平",
-    "link": "https://note.com/maa964/n/nce9e1f65c9f0",
-    "pubDate": "2026.02.09",
-    "description": "「このAI、質問には答えてくれるけど、深い調査をさせると内容が薄いんだよな……」PerplexityやGemini Deep Researchのような「自律検索型AI」を触っていて、そんな違和感を抱いたことはありませんか？続きをみる"
   }
 ]
