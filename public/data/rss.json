@@ -1,5 +1,12 @@
 [
   {
+    "id": "ND4E7092",
+    "title": "Github CopilotとCopilot CLIがいつの間にか最強になっていたので使いこなす　Part２−２:「エディタ」を超え、「OS」になった",
+    "link": "https://note.com/maa964/n/nd4e70925c495",
+    "pubDate": "2026.03.05",
+    "description": "はじめに：AIツールが多すぎる問題の最終解2026年現在、AIコーディングツール市場は百花繚乱です。 Claude Code、Cursor、Windsurf、Amazon Q Developer、Google Antigravity…… 毎月のように新しいツールが話題になり、SNSのタイムラインは「○○に乗り換えました！」「△△の方が速い！」という投稿で溢れています。 「結局、どれを使えばいいの？..."
+  },
+  {
     "id": "N59E438A",
     "title": "WindowsはAI OSの夢を見るか？：混沌の先にある「真の共生」への道",
     "link": "https://note.com/maa964/n/n59e438acbf4a",
@@ -166,12 +173,5 @@
     "link": "https://note.com/maa964/n/nd024514acb6a",
     "pubDate": "2026.02.12",
     "description": "概要 / なぜこの記事を書くのか\n対象読者：AIコーディングツール（Claude Code、Cursor、GitHub Copilotなど）を使っているが、「もっと生産性を上げられるはず」と感じているエンジニア\n解決する課題：AIツールを「ちょっと便利な補助」から「生産性を根本的に変える武器」に変えるための原理原則がわかります。\n続きをみる"
-  },
-  {
-    "id": "N337585A",
-    "title": "エディタ選びの新たな視点を提案します。「分離せよ」",
-    "link": "https://note.com/maa964/n/n337585ada9a8",
-    "pubDate": "2026.02.11",
-    "description": "「Cursor便利だけど重い」「Zed速くてAI不足」。エンジニアの間で繰り返されるこの議論。実は、「最強エディタはどこか」という問い自体が、すでに古くなっているかもしれません。続きをみる"
   }
 ]
