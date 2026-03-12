@@ -106,7 +106,7 @@ export default function LearningPlatform() {
                                         </a>
 
                                         <a
-                                            href="https://learning-tools-orpin.vercel.app/"
+                                            href="https://www.core-study.net/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
@@ -171,7 +171,7 @@ export default function LearningPlatform() {
                         </a>
                         <span className="text-white/20">|</span>
                         <a
-                            href="https://learning-tools-orpin.vercel.app/"
+                            href="https://www.core-study.net/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors text-sm font-medium flex items-center gap-1 group"
