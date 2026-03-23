@@ -112,7 +112,7 @@ export default function LearningPlatform() {
                                             className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
                                         >
                                             <div className="flex flex-col text-left">
-                                                <span className="text-sm font-bold text-primary">Learning Tools</span>
+                                                <span className="text-sm font-bold text-primary">Library For All Creators</span>
                                                 <span className="text-[10px] text-slate-400 font-mono mt-1">https://www.core-study.net/</span>
                                             </div>
                                             <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

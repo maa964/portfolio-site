@@ -1,0 +1,14 @@
+{
+  "project_name": "ポートフォリオサイト",
+  "roadmap_path": "roadmap.md",
+  "roadmap_format": "checkbox",
+  "build_command": "npm run build",
+  "max_components": 2,
+  "skip_build": false,
+  "priority_sections": [
+    { "pattern": "Phase 1|Phase 2", "priority": 1 },
+    { "pattern": "Phase 3", "priority": 2 },
+    { "pattern": "Phase 4", "priority": 3 }
+  ],
+  "claude_extra_prompt": "Next.js 15 + React 19 + Tailwind CSS。Cloudflare Pages デプロイ。サイバーパンク/ネオンのデザインテーマ。スクロールバーのネオングラデーション維持。既存の src/ 構造に合わせる。"
+}
