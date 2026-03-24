@@ -100,7 +100,7 @@ export default function LearningPlatform() {
                                         >
                                             <div className="flex flex-col text-left">
                                                 <span className="text-sm font-bold text-primary">Programming Learn</span>
-                                                <span className="text-[10px] text-slate-400 font-mono mt-1">core-axis-dev-site.vercel.app</span>
+                                                <span className="text-[10px] text-slate-400 font-mono mt-1">core-axis-dev</span>
                                             </div>
                                             <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                         </a>
