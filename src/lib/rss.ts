@@ -7,6 +7,7 @@ export interface RssArticle {
   link: string;
   pubDate: string;
   description: string;
+  source?: string;
 }
 
 function extractTagContent(xml: string, tag: string): string {
@@ -88,7 +89,8 @@ export async function fetchRssArticles(url: string): Promise<RssArticle[]> {
       title,
       link,
       pubDate: formatDate(pubDate),
-      description: description.slice(0, 200) + (description.length > 200 ? '...' : '')
+      description: description.slice(0, 200) + (description.length > 200 ? '...' : ''),
+      source: new URL(url).hostname
     });
   }
 

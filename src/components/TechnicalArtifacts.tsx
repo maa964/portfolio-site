@@ -51,6 +51,15 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
                         note.com/maa964
                         <ExternalLink size={10} />
                     </a>
+                    <a
+                        href="https://lazytech.hatenablog.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2 rounded text-[10px] font-bold uppercase tracking-widest transition-all border border-primary/30 text-primary hover:bg-primary/10 flex items-center gap-2"
+                    >
+                        lazytech.hatenablog.com
+                        <ExternalLink size={10} />
+                    </a>
                     <span className="px-5 py-2 text-primary/60 text-[10px] font-bold uppercase tracking-widest">
                         {articles.length} Articles
                     </span>
@@ -76,7 +85,7 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
                                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-magenta/10" />
                                 <div className="absolute inset-0 bg-[#0a0f11]/60" />
                                 <span className="relative z-10 text-3xl font-black font-display italic text-primary/30 tracking-tighter group-hover:text-primary/50 transition-colors">
-                                    note.com
+                                    {art.source ?? 'note.com'}
                                 </span>
                                 <div className="absolute top-3 left-3 bg-[#0a0f11]/80 px-2 py-0.5 border border-primary/30 rounded text-[8px] font-mono text-primary uppercase font-bold tracking-tighter">
                                     ID: {art.id}

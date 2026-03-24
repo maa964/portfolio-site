@@ -4,7 +4,8 @@
       "WebFetch(domain:note.com)",
       "Bash(npm install:*)",
       "WebFetch(domain:maa964.booth.pm)",
-      "Bash(ffmpeg:*)"
+      "Bash(ffmpeg:*)",
+      "Bash(node scripts/fetch-rss.mjs)"
     ]
   }
 }
