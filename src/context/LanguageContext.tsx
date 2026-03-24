@@ -51,7 +51,7 @@ const translations: TranslationData = {
     username: { ja: 'ユーザー名', en: 'USERNAME', zh: '用户名' },
     emailCoordinates: { ja: 'メールアドレス', en: 'EMAIL_ADDRESS', zh: '邮箱地址' },
     dataPayload: { ja: '本文', en: 'MESSAGE', zh: '信息' },
-    decryptingFrontier: { ja: 'AI/MLエンジニアリングの最前線を解読する', en: 'Decrypting the frontier of AI/ML engineering', zh: '解读 AI/ML 工程的前沿' },
+    decryptingFrontier: { ja: '音響・AI/MLエンジニアリングの最前線を解読する', en: 'Decrypting the frontier of AI/ML engineering', zh: '解读 AI/ML 工程的前沿' },
     searchDataStreams: { ja: 'データストリームを検索...', en: 'Search Data Streams...', zh: '搜索数据流...' },
 };
 
