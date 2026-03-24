@@ -93,14 +93,14 @@ export default function LearningPlatform() {
 
                                     <div className="space-y-4">
                                         <a
-                                            href="https://programming-learn-site.vercel.app/"
+                                            href="https://www.core-axis-dev.xyz/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
                                         >
                                             <div className="flex flex-col text-left">
                                                 <span className="text-sm font-bold text-primary">Programming Learn</span>
-                                                <span className="text-[10px] text-slate-400 font-mono mt-1">programming-learn-site.vercel.app</span>
+                                                <span className="text-[10px] text-slate-400 font-mono mt-1">core-axis-dev</span>
                                             </div>
                                             <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                         </a>
@@ -161,7 +161,7 @@ export default function LearningPlatform() {
                     </div>
                     <div className="flex items-center gap-4">
                         <a
-                            href="https://programming-learn-site.vercel.app/"
+                            href="https://www.core-axis-dev.xyz/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary hover:text-primary/80 transition-colors text-sm font-medium flex items-center gap-1 group"
