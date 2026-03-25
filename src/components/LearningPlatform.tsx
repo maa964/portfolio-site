@@ -113,7 +113,7 @@ export default function LearningPlatform() {
                                         >
                                             <div className="flex flex-col text-left">
                                                 <span className="text-sm font-bold text-primary">Library For All Creators</span>
-                                                <span className="text-[10px] text-slate-400 font-mono mt-1">https://www.core-study.net/</span>
+                                                <span className="text-[10px] text-slate-400 font-mono mt-1">core-study.net</span>
                                             </div>
                                             <ExternalLink size={16} className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                         </a>
