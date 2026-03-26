@@ -20,7 +20,7 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
     const remainingCount = articles.length - INITIAL_DISPLAY_COUNT;
 
     return (
-        <section id="blog" className="py-24 bg-[#0a0f11] relative overflow-hidden min-h-screen">
+        <section id="blog" className="py-24 relative overflow-hidden min-h-screen" style={{ background: 'var(--cyber-section-bg)' }}>
             <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-20 relative z-10">
@@ -41,7 +41,7 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
                 </div>
 
                 {/* Source Badge */}
-                <div className="flex gap-3 flex-wrap p-2 border border-primary/10 rounded-xl bg-card-dark/30 backdrop-blur-sm mb-12">
+                <div className="flex gap-3 flex-wrap p-2 rounded-xl backdrop-blur-sm mb-12" style={{ border: '1px solid var(--cyber-border)', background: 'var(--cyber-subtle-bg)' }}>
                     <a
                         href="https://note.com/maa964"
                         target="_blank"
@@ -76,7 +76,8 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="group relative flex flex-col bg-[#162024]/40 backdrop-blur-md rounded-lg overflow-hidden border border-primary/10 hover:border-primary transition-all duration-300 shadow-xl cursor-pointer"
+                            className="group relative flex flex-col backdrop-blur-md rounded-lg overflow-hidden border hover:border-primary transition-all duration-300 shadow-xl cursor-pointer"
+                        style={{ background: 'var(--cyber-card-bg)', borderColor: 'var(--cyber-border)' }}
                         >
                             {/* Scanline Hover Effect */}
                             <div className="absolute inset-x-0 h-px bg-primary shadow-[0_0_15px_#25c0f4] z-20 opacity-0 group-hover:opacity-100 group-hover:animate-scanline pointer-events-none" />
@@ -87,7 +88,7 @@ export default function TechnicalArtifacts({ articles }: TechnicalArtifactsProps
                                 <span className="relative z-10 text-3xl font-black font-display italic text-primary/30 tracking-tighter group-hover:text-primary/50 transition-colors">
                                     {art.source ?? 'note.com'}
                                 </span>
-                                <div className="absolute top-3 left-3 bg-[#0a0f11]/80 px-2 py-0.5 border border-primary/30 rounded text-[8px] font-mono text-primary uppercase font-bold tracking-tighter">
+                                <div className="absolute top-3 left-3 px-2 py-0.5 border border-primary/30 rounded text-[8px] font-mono text-primary uppercase font-bold tracking-tighter" style={{ background: 'var(--cyber-inner-bg)' }}>
                                     ID: {art.id}
                                 </div>
                             </div>

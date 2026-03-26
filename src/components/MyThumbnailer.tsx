@@ -6,7 +6,7 @@ import { thumbnailerFeatures as features } from '@/data/my-thumbnailer';
 export default function MyThumbnailer() {
 
     return (
-        <section id="thumbnailer" className="py-24 bg-gradient-to-b from-[#0d1518] to-[#0a0f11] relative overflow-hidden">
+        <section id="thumbnailer" className="py-24 relative overflow-hidden" style={{ background: 'var(--cyber-section-bg)' }}>
             <div className="absolute inset-0 z-0 opacity-5 pointer-events-none cyber-grid" />
 
             {/* Accent Lines */}
@@ -42,15 +42,15 @@ export default function MyThumbnailer() {
                         viewport={{ once: true }}
                         className="lg:col-span-7 relative group"
                     >
-                        <div className="relative bg-[#162024]/60 rounded-2xl border border-accent-magenta/20 overflow-hidden backdrop-blur-md">
+                        <div className="relative rounded-2xl overflow-hidden backdrop-blur-md" style={{ background: 'var(--cyber-card-bg)', border: '1px solid rgba(255, 46, 163, 0.3)' }}>
                             {/* Browser Top Bar */}
-                            <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center justify-between">
+                            <div className="px-4 py-3 flex items-center justify-between" style={{ background: 'var(--cyber-subtle-bg)', borderBottom: '1px solid var(--cyber-border-subtle)' }}>
                                 <div className="flex gap-1.5">
                                     <div className="size-2.5 rounded-full bg-red-500/40" />
                                     <div className="size-2.5 rounded-full bg-yellow-500/40" />
                                     <div className="size-2.5 rounded-full bg-green-500/40" />
                                 </div>
-                                <div className="bg-black/40 px-3 py-1 rounded text-[8px] font-mono text-slate-500 border border-white/5">
+                                <div className="px-3 py-1 rounded text-[8px] font-mono text-slate-500" style={{ background: 'var(--cyber-inner-bg)', border: '1px solid var(--cyber-border-subtle)' }}>
                                     https://my-thumbnailer.vercel.app/
                                 </div>
                                 <div className="w-10" />
@@ -58,15 +58,15 @@ export default function MyThumbnailer() {
 
                             {/* Content Preview */}
                             <div className="p-1 relative aspect-video overflow-hidden">
-                                <div className="absolute inset-0 bg-[#0a0f11] flex items-center justify-center">
+                                <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'var(--cyber-deep-bg)' }}>
                                     <div className="text-center space-y-6">
                                         <div className="inline-block px-4 py-2 bg-accent-magenta/20 border border-accent-magenta/40 rounded-lg">
                                             <span className="text-accent-magenta font-mono font-bold animate-pulse text-xs uppercase tracking-[0.2em]">Next-Gen Creator Tools</span>
                                         </div>
                                         <h3 className="text-4xl font-black text-white italic tracking-tighter">BOOST YOUR <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-magenta to-primary">CLICK RATE</span></h3>
                                         <div className="flex justify-center gap-4">
-                                            <div className="w-32 h-18 bg-white/5 rounded border border-white/10 flex items-center justify-center">
-                                                <span className="text-[10px] text-white/40 font-mono">Variant A</span>
+                                            <div className="w-32 h-18 rounded flex items-center justify-center" style={{ background: 'var(--cyber-subtle-bg)', border: '1px solid var(--cyber-border-subtle)' }}>
+                                                <span className="text-[10px] font-mono" style={{ color: 'var(--text-tertiary)' }}>Variant A</span>
                                             </div>
                                             <div className="w-32 h-18 bg-accent-magenta/10 rounded border border-accent-magenta/30 flex items-center justify-center">
                                                 <span className="text-[10px] text-accent-magenta/60 font-mono">Variant B</span>
@@ -75,7 +75,7 @@ export default function MyThumbnailer() {
                                     </div>
                                 </div>
                                 {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1518] to-transparent opacity-60" />
+                                <div className="absolute inset-0 opacity-40" style={{ background: 'linear-gradient(to top, var(--cyber-deep-bg), transparent)' }} />
                             </div>
                         </div>
 
@@ -130,18 +130,19 @@ export default function MyThumbnailer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
-                    className="mt-20 p-8 bg-[#162024]/40 rounded-2xl border border-white/5 flex flex-wrap items-center justify-around gap-8 backdrop-blur-sm"
+                    className="mt-20 p-8 rounded-2xl flex flex-wrap items-center justify-around gap-8 backdrop-blur-sm"
+                    style={{ background: 'var(--cyber-card-bg)', border: '1px solid var(--cyber-border-subtle)' }}
                 >
                     <div className="text-center group">
                         <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1 group-hover:text-accent-magenta transition-colors">Integration</p>
                         <p className="text-2xl font-black text-white font-mono">Vercel Edge</p>
                     </div>
-                    <div className="h-10 w-px bg-white/10 hidden md:block" />
+                    <div className="h-10 w-px hidden md:block" style={{ background: 'var(--cyber-border-subtle)' }} />
                     <div className="text-center group">
                         <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">Latency</p>
                         <p className="text-2xl font-black text-white font-mono">&lt; 100ms</p>
                     </div>
-                    <div className="h-10 w-px bg-white/10 hidden md:block" />
+                    <div className="h-10 w-px hidden md:block" style={{ background: 'var(--cyber-border-subtle)' }} />
                     <div className="text-center group">
                         <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1 group-hover:text-accent-magenta transition-colors">Optimization</p>
                         <p className="text-2xl font-black text-white font-mono">Neural A/B</p>

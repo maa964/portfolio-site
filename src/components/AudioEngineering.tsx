@@ -11,7 +11,7 @@ export default function AudioEngineering() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section id="audio" className="py-24 bg-[#0a0f11] relative overflow-hidden min-h-screen">
+    <section id="audio" className="py-24 relative overflow-hidden min-h-screen" style={{ background: 'var(--cyber-section-bg)' }}>
       <div className="absolute inset-0 z-0 opacity-5 pointer-events-none cyber-grid" />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-20 relative z-10">
@@ -38,7 +38,8 @@ export default function AudioEngineering() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 p-8 rounded-2xl bg-[#162024]/60 border border-primary/20 backdrop-blur-md relative overflow-hidden"
+          className="mb-16 p-8 rounded-2xl backdrop-blur-md relative overflow-hidden"
+          style={{ background: 'var(--cyber-card-bg)', border: '1px solid var(--cyber-border)' }}
         >
           {/* Decorative Corner Brackets */}
           <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary/40" />
@@ -55,7 +56,7 @@ export default function AudioEngineering() {
               </div>
 
               {/* Waveform Display */}
-              <div className="relative h-32 bg-black/40 rounded-lg border border-primary/10 overflow-hidden mb-6 flex items-center justify-center px-4">
+              <div className="relative h-32 rounded-lg overflow-hidden mb-6 flex items-center justify-center px-4" style={{ background: 'var(--cyber-inner-bg)', border: '1px solid var(--cyber-border)' }}>
                 <div className="flex items-end gap-1 h-full w-full justify-center">
                   {Array.from({ length: 60 }).map((_, i) => {
                     const height = Math.sin(i * 0.3) * 40 + 50;
@@ -86,7 +87,7 @@ export default function AudioEngineering() {
                   </button>
                   <div className="flex items-center gap-2">
                     <Volume2 size={16} className="text-primary" />
-                    <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="w-24 h-1 rounded-full overflow-hidden" style={{ background: 'var(--cyber-border-subtle)' }}>
                       <div className="w-3/4 h-full bg-primary" />
                     </div>
                   </div>
@@ -100,7 +101,7 @@ export default function AudioEngineering() {
 
             {/* Metadata Panel */}
             <div className="w-full md:w-64 space-y-4">
-              <div className="p-4 bg-black/40 rounded-lg border border-primary/10">
+              <div className="p-4 rounded-lg" style={{ background: 'var(--cyber-inner-bg)', border: '1px solid var(--cyber-border)' }}>
                 <p className="text-[9px] font-mono text-primary/50 uppercase tracking-widest mb-2">Signal_Analysis</p>
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
@@ -117,7 +118,7 @@ export default function AudioEngineering() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-accent-magenta/5 rounded-lg border border-accent-magenta/20">
+              <div className="p-4 rounded-lg" style={{ background: 'rgba(255, 46, 163, 0.08)', border: '1px solid rgba(255, 46, 163, 0.3)' }}>
                 <p className="text-[9px] font-mono text-accent-magenta/70 uppercase tracking-widest mb-2">Loudness_Target</p>
                 <div className="flex items-center gap-2">
                   <BarChart3 size={14} className="text-accent-magenta" />
@@ -137,7 +138,8 @@ export default function AudioEngineering() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-xl bg-[#162024]/40 border border-primary/10 hover:border-primary/40 transition-all duration-500 group relative overflow-hidden backdrop-blur-md"
+              className="p-8 rounded-xl hover:border-primary/40 transition-all duration-500 group relative overflow-hidden backdrop-blur-md"
+              style={{ background: 'var(--cyber-card-bg)', border: '1px solid var(--cyber-border)' }}
             >
               <div className="flex items-center gap-5 mb-6">
                 <div
@@ -196,7 +198,7 @@ export default function AudioEngineering() {
 
         {/* Dynamic Monitoring Bar */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-6 rounded-xl bg-primary/5 border border-primary/10 flex flex-col gap-3 backdrop-blur-sm">
+          <div className="p-6 rounded-xl flex flex-col gap-3 backdrop-blur-sm" style={{ background: 'rgba(37, 192, 244, 0.08)', border: '1px solid var(--cyber-border)' }}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <BarChart3 size={16} className="text-primary" />
@@ -204,12 +206,12 @@ export default function AudioEngineering() {
               </div>
               <span className="text-[10px] font-mono text-primary">-12 LUFS Target</span>
             </div>
-            <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--cyber-border-subtle)' }}>
               <motion.div initial={{ width: 0 }} whileInView={{ width: '65%' }} className="h-full bg-primary" />
             </div>
             <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest">Signal Analysis: Active</span>
           </div>
-          <div className="p-6 rounded-xl bg-accent-magenta/5 border border-accent-magenta/10 flex flex-col gap-3 backdrop-blur-sm">
+          <div className="p-6 rounded-xl flex flex-col gap-3 backdrop-blur-sm" style={{ background: 'rgba(255, 46, 163, 0.08)', border: '1px solid rgba(255, 46, 163, 0.3)' }}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Zap size={16} className="text-accent-magenta" />
@@ -217,7 +219,7 @@ export default function AudioEngineering() {
               </div>
               <span className="text-[10px] font-mono text-accent-magenta">-6 LUFS Ceiling</span>
             </div>
-            <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--cyber-border-subtle)' }}>
               <motion.div initial={{ width: 0 }} whileInView={{ width: '88%' }} className="h-full bg-accent-magenta" />
             </div>
             <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest">Verification: Complete</span>

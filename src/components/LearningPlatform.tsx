@@ -8,7 +8,7 @@ export default function LearningPlatform() {
     const { t } = useLanguage();
 
     return (
-        <section id="learning" className="py-24 bg-gradient-to-b from-[#0a0f11] to-[#0d1518] relative overflow-hidden">
+        <section id="learning" className="py-24 relative overflow-hidden" style={{ background: 'var(--cyber-section-bg)' }}>
             <div className="absolute inset-0 z-0 opacity-5 pointer-events-none cyber-grid" />
 
             {/* Accent Lines */}
@@ -42,7 +42,7 @@ export default function LearningPlatform() {
                     className="relative"
                 >
                     {/* Main Card */}
-                    <div className="relative bg-[#0d1518]/60 rounded-2xl border border-primary/20 overflow-hidden backdrop-blur-md p-8 md:p-12">
+                    <div className="relative rounded-2xl overflow-hidden backdrop-blur-md p-8 md:p-12" style={{ background: 'var(--cyber-card-bg)', border: '1px solid var(--cyber-border)' }}>
                         {/* Decorative Corner Brackets */}
                         <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary/40" />
                         <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-primary/40" />
@@ -96,7 +96,8 @@ export default function LearningPlatform() {
                                             href="https://www.core-axis-dev.xyz/"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
+                                            className="group relative flex items-center justify-between w-full px-6 py-4 hover:border-primary/50 text-white rounded-lg transition-all"
+                                            style={{ background: 'var(--cyber-subtle-bg)', border: '1px solid var(--cyber-border-subtle)' }}
                                         >
                                             <div className="flex flex-col text-left">
                                                 <span className="text-sm font-bold text-primary">Programming Learn</span>
@@ -109,7 +110,8 @@ export default function LearningPlatform() {
                                             href="https://www.core-study.net/"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group relative flex items-center justify-between w-full px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 text-white rounded-lg transition-all"
+                                            className="group relative flex items-center justify-between w-full px-6 py-4 hover:border-primary/50 text-white rounded-lg transition-all"
+                                            style={{ background: 'var(--cyber-subtle-bg)', border: '1px solid var(--cyber-border-subtle)' }}
                                         >
                                             <div className="flex flex-col text-left">
                                                 <span className="text-sm font-bold text-primary">Library For All Creators</span>
@@ -122,7 +124,7 @@ export default function LearningPlatform() {
                                     </div>
 
                                     {/* Stats */}
-                                    <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10">
+                                    <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--cyber-border-subtle)' }}>
                                         <div className="text-center">
                                             <p className="text-2xl font-bold text-primary font-mono">24/7</p>
                                             <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Access</p>
@@ -151,7 +153,8 @@ export default function LearningPlatform() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 p-6 bg-background-dark/50 rounded-xl border border-primary/10"
+                    className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 p-6 rounded-xl"
+                    style={{ background: 'var(--cyber-subtle-bg)', border: '1px solid var(--cyber-border)' }}
                 >
                     <div className="flex items-center gap-3">
                         <div className="size-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />

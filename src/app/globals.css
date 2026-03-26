@@ -480,3 +480,47 @@ body {
 .text-white\/70 {
   color: var(--text-secondary);
 }
+
+/* ========================================
+   Cyber Sections CSS Variables
+   (#blog, #audio, #learning, #thumbnailer)
+   ネオンカラー維持 + ライトモード視認性確保
+   ======================================== */
+:root {
+  --cyber-section-bg: #eef3f7;
+  --cyber-card-bg: #ffffff;
+  --cyber-inner-bg: #e4ecf2;
+  --cyber-deep-bg: #d8e3ec;
+  --cyber-subtle-bg: #f2f6fa;
+  --cyber-border: rgba(37, 192, 244, 0.4);
+  --cyber-border-subtle: #d4dfe8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cyber-section-bg: #0a0f11;
+    --cyber-card-bg: rgba(22, 32, 36, 0.6);
+    --cyber-inner-bg: rgba(0, 0, 0, 0.4);
+    --cyber-deep-bg: #0a0f11;
+    --cyber-subtle-bg: rgba(255, 255, 255, 0.05);
+    --cyber-border: rgba(37, 192, 244, 0.2);
+    --cyber-border-subtle: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Section backgrounds (gradient override) */
+#blog,
+#audio,
+#learning,
+#thumbnailer {
+  background-color: var(--cyber-section-bg) !important;
+  background-image: none !important;
+}
+
+/* Restore neon primary color within cyber sections */
+#blog .text-primary,
+#audio .text-primary,
+#learning .text-primary,
+#thumbnailer .text-primary {
+  color: #25c0f4 !important;
+}
